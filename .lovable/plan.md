@@ -1,60 +1,56 @@
-## Aasta Lifespace — Luxurious Scrollable Site
+## 1. Fix the "small gap / requires extra scroll" issue on section navigation
 
-A single-page, story-driven website inspired by aasta-lifespace.vercel.app, elevated with refined typography, generous whitespace, slow cinematic reveals, and an editorial feel suited to a 40-year-old luxury construction firm.
+**Cause:** `scrollIntoView` aligns the section's top with the viewport top (offset 0). On mobile, the fixed top bar (~64px) covers the first part of the section. On desktop, the IntersectionObserver `rootMargin: "-40% 0px -55% 0px"` requires the section to cross 40% of viewport before becoming "active", so the click + smooth-scroll lands a bit short of where the eye expects, and the active-state highlight lags too.
 
-### Brand & Design Language
+**Fix:**
+- Add `scroll-margin-top` to all section anchors so they account for the fixed mobile header (and any desktop spacing). Add a global rule in `src/index.css`:
+  ```
+  section[id] { scroll-margin-top: 80px; }
+  @media (min-width: 1024px) { section[id] { scroll-margin-top: 0; } }
+  ```
+  And also set `html { scroll-padding-top: 80px; }` for native anchor jumps.
+- In `SideRail.tsx`, replace `scrollIntoView` with a manual scroll that subtracts the header offset (80px on mobile, 0 on desktop). This guarantees pixel-perfect landing regardless of section padding.
+- Loosen the IntersectionObserver `rootMargin` to `"-20% 0px -70% 0px"` so the active nav state updates as soon as the section's top reaches ~20% from viewport top — feels in sync with the click.
 
-- **Logo**: uploaded "Aasta Lifespace" wordmark + bird mark, placed top-left, persistent on the side rail.
-- **Palette**: warm ivory background (`#FBF9F4`), deep charcoal text (`#1A1A1A`), signature copper/terracotta accent (`#B86A3D` — taken from the logo underline & "Defined" word), soft taupe muted tones.
-- **Typography**: serif display (Cormorant Garamond / Fraunces) for headlines; clean sans (Inter) for body; small uppercase tracked labels for section numbers ("• 01 — Origin").
-- **Motion**: fade-up on scroll, parallax on hero & project images, subtle image scale on hover, slow easing.
+## 2. Pricing: interactive cost estimator with floors + lead capture
 
-### Layout
+Replace the static "Begin a conversation" CTA inside each pricing tier card with a **"Calculate estimate"** button. Add a full estimator experience:
 
-Fixed left side rail (desktop) holds the logo + numbered nav (01–08). Main content scrolls on the right. Mobile collapses the rail into a top bar with a hamburger sheet.
+### 2a. Estimator (inline below the 3 tier cards, or opens in a dialog)
+A new component `CostEstimator.tsx` with:
+- **Plan selector** (chips): Essential ₹1,850/sqft · Signature ₹2,650/sqft · Atelier (custom rate input, default ₹3,500). Pre-selects whichever tier card the user clicked.
+- **Number of floors** input (1–10, stepper).
+- Dynamic list of floor rows — one per floor — each with a label ("Ground floor", "1st floor"...) and a sqft input.
+- Live computed totals at the bottom:
+  - Total built-up area (sum of floor sqft)
+  - Rate per sqft (from selected plan)
+  - **Estimated total cost** in ₹, formatted in Indian lakhs/crores (e.g. "₹4.85 Cr · ₹4,85,25,000")
+- "Get detailed estimate" primary button → opens lead-capture dialog.
 
-```text
-┌─────────┬──────────────────────────────┐
-│  LOGO   │  HERO (full-bleed image)     │
-│         ├──────────────────────────────┤
-│ 01 Home │  ABOUT / ORIGIN              │
-│ 02 About│  SERVICES                    │
-│  ...    │  PROJECTS (grid)             │
-│ 08 Cont │  APPROACH (6 steps)          │
-│         │  PRICING (3 tiers)           │
-│         │  PHILOSOPHY                  │
-│         │  CONTACT / FOOTER            │
-└─────────┴──────────────────────────────┘
-```
+### 2b. Lead capture dialog (shadcn `Dialog`)
+- Fields: Name, Email, Phone, City (all required, validated with `zod`).
+- On submit: validate, then transition the dialog body to a **"Your estimate" summary view** showing:
+  - Selected plan + rate
+  - Floor-by-floor breakdown table
+  - Total area + grand total cost (highlighted)
+  - Disclaimer: "Indicative estimate. Final pricing depends on site conditions, material selections, and finishes."
+  - "Our team will be in touch shortly" + a "Close" / "Start over" action.
+- Toast confirmation: "Estimate sent. We'll be in touch shortly."
+- Submission is client-side only for now (no backend); contact info + estimate logged to console-free state. If you want it persisted/emailed, we can wire Lovable Cloud in a follow-up.
 
-### Sections
+### 2c. Visual style
+- Estimator uses the same ivory/copper/ink editorial language: Fraunces display numerals for the total, hairline dividers between floor rows, copper accent on the active plan chip, ink-on-ivory inputs with bottom-border styling consistent with the Contact form.
+- Indian number formatting via `Intl.NumberFormat('en-IN')` plus a helper for Cr/Lakh display.
 
-1. **Hero** — Full-viewport luxury architectural image, vignette, headline "Built on Legacy. *Defined* by Precision." with the accent word in copper italic serif. Subtle scroll cue.
-2. **Origin / About** — Section label "• 01 — Origin", large serif heading "A legacy of building, thoughtfully evolved.", three paragraphs, a 2-image collage (portrait + landscape) revealing on scroll.
-3. **Practice / Services** — "• 02 — Practice", three offerings (Construction, Design & Build, Turnkey Interiors) as elegant cards with hairline dividers and number indices.
-4. **Selected Work / Projects** — "• 03 — Selected Work", asymmetric staggered image grid of 5 projects (LW Residence, JM House, KM Residence, JM House, San Francisco) with overlay numbers and names; hover zoom.
-5. **Methods / Approach** — "• 04 — Methods", vertical zig-zag timeline of 6 steps (Understanding, Design, Planning, Execution, Refinement, Handover) with large numerals and short descriptions.
-6. **Engagements / Pricing** — "• 05 — Engagements", three tiers (Essential ₹1,850, Signature ₹2,650 — marked "Most chosen", Atelier — On request) as tall minimal cards with check-mark feature lists and a "Begin a conversation" CTA.
-7. **Philosophy** — "• 06 — Philosophy", two-column layout: text (Materials, Light, Longevity) beside a tall atmospheric image.
-8. **Contact / Footer** — "• 07 — Let's Build", oversized serif "Start your project." + simple inquiry form (name, email, project type, message) and footer with logo, address placeholder, social links, copyright.
+## Technical details
 
-### Imagery
-
-Use high-quality Unsplash architectural/nature photography (luxury homes, warm interiors, lush landscapes) consistent with the reference's mood. All images lazy-loaded.
-
-### Technical Details
-
-- React + Vite + Tailwind, single `Index.tsx` composed of small section components under `src/components/sections/`.
-- Logo copied to `src/assets/aasta-logo.png` and imported as ES module.
-- Design tokens (ivory bg, copper accent, serif display) added to `src/index.css` (HSL vars) and `tailwind.config.ts` (`font-display`, `font-sans`, color tokens).
-- Google Fonts (Fraunces + Inter) loaded via `index.html`.
-- Scroll animations via a tiny custom `useInView` hook + Tailwind transition classes (no heavy libs).
-- Smooth-scroll anchor navigation; active section highlight in the side rail via IntersectionObserver.
-- Fully responsive (side rail → top bar < lg breakpoint).
-- Form is non-functional UI (toast on submit) — backend can be added later if desired.
-
-### Out of Scope (for this pass)
-
-- CMS / dynamic project data
-- Backend form submission / email
-- Multi-page routing (everything on `/`)
+- New files:
+  - `src/components/CostEstimator.tsx` — estimator UI + state (plan, floors[], rate).
+  - `src/components/EstimateDialog.tsx` — shadcn Dialog with two views (form → summary), zod validation.
+  - `src/lib/format-inr.ts` — `formatINR(n)` and `formatCrLakh(n)` helpers.
+- Modified files:
+  - `src/index.css` — add `scroll-margin-top` / `scroll-padding-top` rules.
+  - `src/components/SideRail.tsx` — offset-aware scroll, looser observer margin.
+  - `src/pages/Index.tsx` — Pricing section: each tier's CTA becomes "Calculate estimate" that pre-selects that plan and scrolls to the estimator block rendered below the tier grid.
+- Deps: uses existing shadcn `dialog`, `input`, `label`, `button`, plus `zod` (already a dep via shadcn form). No new packages.
+- All inputs validated client-side: floor sqft must be positive integer ≤ 100,000; total floors 1–10; phone 7–15 digits; email via `z.string().email()`; name 2–80 chars.

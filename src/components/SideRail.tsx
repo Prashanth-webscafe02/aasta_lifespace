@@ -25,7 +25,7 @@ export const SideRail = () => {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
     );
     NAV.forEach((n) => {
       const el = document.getElementById(n.id);
@@ -35,7 +35,11 @@ export const SideRail = () => {
   }, []);
 
   const go = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = window.innerWidth >= 1024 ? 0 : 72;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
     setOpen(false);
   };
 
