@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
+import { FloatTitle } from "@/components/FloatTitle";
 import { CostEstimator, CostEstimatorHandle } from "@/components/CostEstimator";
 import { toast } from "@/hooks/use-toast";
 
@@ -46,12 +47,12 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal delay={150}>
-          <h1 className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[1.02] text-ivory">
+          <FloatTitle as="h1" className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[1.02] text-ivory" fromX={-160}>
             Built on Legacy.
             <br />
-            <span className="italic font-light text-copper-soft">Defined</span>
+            <span className="font-italic-serif text-copper-soft">Defined</span>
             <span className="text-ivory"> by Precision.</span>
-          </h1>
+          </FloatTitle>
         </Reveal>
         <Reveal delay={350}>
           <p className="mt-8 max-w-xl text-base lg:text-lg text-ivory/80 leading-relaxed">
@@ -73,11 +74,11 @@ const About = () => (
       <div className="lg:col-span-5">
         <Reveal><SectionLabel index="01">Origin</SectionLabel></Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+          <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             A legacy of building,
             <br />
-            <span className="italic text-copper">thoughtfully evolved.</span>
-          </h2>
+            <span className="font-italic-serif text-copper">thoughtfully evolved.</span>
+          </FloatTitle>
         </Reveal>
       </div>
       <div className="lg:col-span-6 lg:col-start-7 space-y-6 text-ink-soft text-base lg:text-[17px] leading-relaxed">
@@ -120,11 +121,11 @@ const Services = () => (
       <div className="lg:col-span-5">
         <Reveal><SectionLabel index="02">Practice</SectionLabel></Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+          <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Crafted
             <br />
-            <span className="italic text-copper">end-to-end.</span>
-          </h2>
+            <span className="font-italic-serif text-copper">end-to-end.</span>
+          </FloatTitle>
         </Reveal>
       </div>
       <div className="lg:col-span-6 lg:col-start-7">
@@ -162,11 +163,11 @@ const Projects = () => (
       <div className="lg:col-span-5">
         <Reveal><SectionLabel index="03">Selected Work</SectionLabel></Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+          <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Spaces, carefully
             <br />
-            <span className="italic text-copper">brought to life.</span>
-          </h2>
+            <span className="font-italic-serif text-copper">brought to life.</span>
+          </FloatTitle>
         </Reveal>
       </div>
       <div className="lg:col-span-6 lg:col-start-7 self-end">
@@ -216,11 +217,11 @@ const Approach = () => (
       <div className="lg:col-span-5">
         <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />04 — Methods</div></Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05]">
+          <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05]">
             Six steps,
             <br />
-            <span className="italic text-copper-soft">one standard.</span>
-          </h2>
+            <span className="font-italic-serif text-copper-soft">one standard.</span>
+          </FloatTitle>
         </Reveal>
       </div>
     </div>
@@ -293,11 +294,11 @@ const Pricing = () => {
         <div className="lg:col-span-6">
           <Reveal><SectionLabel index="05">Engagements</SectionLabel></Reveal>
           <Reveal delay={120}>
-            <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+            <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
               Three ways
               <br />
-              <span className="italic text-copper">to begin.</span>
-            </h2>
+              <span className="font-italic-serif text-copper">to begin.</span>
+            </FloatTitle>
           </Reveal>
         </div>
         <div className="lg:col-span-5 lg:col-start-8 self-end">
@@ -362,11 +363,11 @@ const Philosophy = () => (
       <div className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
         <Reveal><SectionLabel index="06">Philosophy</SectionLabel></Reveal>
         <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+          <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             A responsible
             <br />
-            way <span className="italic text-copper">to build.</span>
-          </h2>
+            way <span className="font-italic-serif text-copper">to build.</span>
+          </FloatTitle>
         </Reveal>
         <Reveal delay={240}>
           <p className="mt-8 text-ink-soft text-lg leading-relaxed max-w-xl">
@@ -401,11 +402,11 @@ const Contact = () => {
         <div className="lg:col-span-7">
           <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />07 — Let's Build</div></Reveal>
           <Reveal delay={120}>
-            <h2 className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
+            <FloatTitle className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
               Start your
               <br />
-              <span className="italic text-copper-soft">project.</span>
-            </h2>
+              <span className="font-italic-serif text-copper-soft">project.</span>
+            </FloatTitle>
           </Reveal>
           <Reveal delay={240}>
             <p className="mt-8 text-ivory/70 text-lg leading-relaxed max-w-lg">
