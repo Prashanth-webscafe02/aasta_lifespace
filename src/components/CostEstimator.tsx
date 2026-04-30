@@ -1,6 +1,7 @@
 import { forwardRef, useImperativeHandle, useMemo, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { FloatTitle } from "@/components/FloatTitle";
 import { formatCrLakh, formatINR } from "@/lib/format-inr";
 import { EstimateDialog, FloorEntry } from "@/components/EstimateDialog";
 
@@ -70,9 +71,9 @@ export const CostEstimator = forwardRef<CostEstimatorHandle>((_, ref) => {
               <span className="h-px w-6 bg-copper" />
               <span>Cost calculator</span>
             </div>
-            <h3 className="mt-6 font-display text-3xl lg:text-5xl text-ink leading-tight">
-              Estimate your <span className="italic text-copper">build.</span>
-            </h3>
+            <FloatTitle as="h3" className="mt-6 font-display text-3xl lg:text-5xl text-ink leading-tight">
+              Estimate your <span className="font-italic-serif text-copper">build.</span>
+            </FloatTitle>
             <p className="mt-4 text-ink-soft max-w-md">
               Choose a plan, enter the floor-wise area, and we'll prepare an indicative figure.
             </p>
