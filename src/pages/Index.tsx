@@ -244,6 +244,7 @@ const Approach = () => (
 
 const TIERS = [
   {
+    key: "essential",
     name: "Essential",
     tag: "Considered construction",
     price: "₹1,850",
@@ -253,6 +254,7 @@ const TIERS = [
     featured: false,
   },
   {
+    key: "signature",
     name: "Signature",
     tag: "Design and build, as one",
     price: "₹2,650",
@@ -262,6 +264,7 @@ const TIERS = [
     featured: true,
   },
   {
+    key: "atelier",
     name: "Atelier",
     tag: "Without compromise",
     price: "On request",
@@ -272,57 +275,75 @@ const TIERS = [
   },
 ];
 
-const Pricing = () => (
-  <section id="pricing" className="relative px-6 py-32 lg:px-20 lg:py-44">
-    <div className="grid gap-12 lg:grid-cols-12">
-      <div className="lg:col-span-6">
-        <Reveal><SectionLabel index="05">Engagements</SectionLabel></Reveal>
-        <Reveal delay={120}>
-          <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
-            Three ways
-            <br />
-            <span className="italic text-copper">to begin.</span>
-          </h2>
-        </Reveal>
-      </div>
-      <div className="lg:col-span-5 lg:col-start-8 self-end">
-        <Reveal delay={200}>
-          <p className="text-ink-soft leading-relaxed text-lg">Structured, but never rigid.</p>
-        </Reveal>
-      </div>
-    </div>
+const Pricing = () => {
+  const estimatorRef = useRef<CostEstimatorHandle>(null);
 
-    <div className="mt-20 grid gap-6 lg:grid-cols-3">
-      {TIERS.map((t, i) => (
-        <Reveal key={t.name} delay={i * 150}>
-          <div className={`relative h-full flex flex-col p-8 lg:p-10 transition-all duration-500 ${t.featured ? "bg-ink text-ivory shadow-[var(--shadow-soft)]" : "bg-ivory-deep text-ink hover:-translate-y-1"}`}>
-            {t.featured && (
-              <span className="absolute -top-3 left-8 bg-copper text-ivory text-[10px] tracking-label uppercase px-3 py-1.5">Most chosen</span>
-            )}
-            <p className={`text-[10px] tracking-label uppercase ${t.featured ? "text-copper-soft" : "text-copper"}`}>{t.tag}</p>
-            <h3 className="mt-4 font-display text-4xl">{t.name}</h3>
-            <div className="mt-8">
-              <p className="font-display text-5xl lg:text-6xl">{t.price}</p>
-              <p className={`mt-2 text-sm ${t.featured ? "text-ivory/60" : "text-ink-soft"}`}>{t.unit}</p>
+  const choosePlan = (key: string) => {
+    estimatorRef.current?.selectPlan(key);
+    const el = document.getElementById("estimator");
+    if (el) {
+      const offset = window.innerWidth >= 1024 ? 24 : 88;
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section id="pricing" className="relative px-6 py-32 lg:px-20 lg:py-44">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-6">
+          <Reveal><SectionLabel index="05">Engagements</SectionLabel></Reveal>
+          <Reveal delay={120}>
+            <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
+              Three ways
+              <br />
+              <span className="italic text-copper">to begin.</span>
+            </h2>
+          </Reveal>
+        </div>
+        <div className="lg:col-span-5 lg:col-start-8 self-end">
+          <Reveal delay={200}>
+            <p className="text-ink-soft leading-relaxed text-lg">Structured, but never rigid.</p>
+          </Reveal>
+        </div>
+      </div>
+
+      <div className="mt-20 grid gap-6 lg:grid-cols-3">
+        {TIERS.map((t, i) => (
+          <Reveal key={t.name} delay={i * 150}>
+            <div className={`relative h-full flex flex-col p-8 lg:p-10 transition-all duration-500 ${t.featured ? "bg-ink text-ivory shadow-[var(--shadow-soft)]" : "bg-ivory-deep text-ink hover:-translate-y-1"}`}>
+              {t.featured && (
+                <span className="absolute -top-3 left-8 bg-copper text-ivory text-[10px] tracking-label uppercase px-3 py-1.5">Most chosen</span>
+              )}
+              <p className={`text-[10px] tracking-label uppercase ${t.featured ? "text-copper-soft" : "text-copper"}`}>{t.tag}</p>
+              <h3 className="mt-4 font-display text-4xl">{t.name}</h3>
+              <div className="mt-8">
+                <p className="font-display text-5xl lg:text-6xl">{t.price}</p>
+                <p className={`mt-2 text-sm ${t.featured ? "text-ivory/60" : "text-ink-soft"}`}>{t.unit}</p>
+              </div>
+              <p className={`mt-6 text-sm leading-relaxed ${t.featured ? "text-ivory/75" : "text-ink-soft"}`}>{t.body}</p>
+              <ul className="mt-8 space-y-3 flex-1">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-sm">
+                    <Check size={14} className={`mt-1 shrink-0 ${t.featured ? "text-copper-soft" : "text-copper"}`} />
+                    <span className={t.featured ? "text-ivory/85" : "text-ink"}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => choosePlan(t.key)}
+                className={`mt-10 inline-flex items-center justify-between border-t pt-5 text-sm tracking-label uppercase transition-colors ${t.featured ? "border-ivory/20 text-ivory hover:text-copper-soft" : "border-ink/15 text-ink hover:text-copper"}`}
+              >
+                Calculate estimate <ArrowUpRight size={16} />
+              </button>
             </div>
-            <p className={`mt-6 text-sm leading-relaxed ${t.featured ? "text-ivory/75" : "text-ink-soft"}`}>{t.body}</p>
-            <ul className="mt-8 space-y-3 flex-1">
-              {t.features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm">
-                  <Check size={14} className={`mt-1 shrink-0 ${t.featured ? "text-copper-soft" : "text-copper"}`} />
-                  <span className={t.featured ? "text-ivory/85" : "text-ink"}>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" className={`mt-10 inline-flex items-center justify-between border-t pt-5 text-sm tracking-label uppercase transition-colors ${t.featured ? "border-ivory/20 text-ivory hover:text-copper-soft" : "border-ink/15 text-ink hover:text-copper"}`}>
-              Begin a conversation <ArrowUpRight size={16} />
-            </a>
-          </div>
-        </Reveal>
-      ))}
-    </div>
-  </section>
-);
+          </Reveal>
+        ))}
+      </div>
+
+      <CostEstimator ref={estimatorRef} />
+    </section>
+  );
+};
 
 const PILLARS = [
   { title: "Materials", body: "Optimised use. Chosen with intent. Built to last." },
