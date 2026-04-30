@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
+import { CostEstimator, CostEstimatorHandle } from "@/components/CostEstimator";
 import { toast } from "@/hooks/use-toast";
 
 import hero from "@/assets/hero.jpg";
