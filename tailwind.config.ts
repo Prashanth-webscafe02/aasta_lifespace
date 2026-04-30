@@ -15,7 +15,8 @@ export default {
     extend: {
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
       },
       colors: {
         ink: "hsl(var(--ink))",
