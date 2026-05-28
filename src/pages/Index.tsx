@@ -150,11 +150,11 @@ const Services = () => (
 );
 
 const PROJECTS = [
-  { n: "216", name: "LW Residence", img: p1, place: "Bengaluru", span: "lg:col-span-7 lg:row-span-2" },
-  { n: "141", name: "JM House", img: p2, place: "Goa", span: "lg:col-span-5" },
-  { n: "212", name: "KM Residence", img: p4, place: "Hyderabad", span: "lg:col-span-5" },
-  { n: "183", name: "Vista Atelier", img: p3, place: "Mumbai", span: "lg:col-span-7" },
-  { n: "112", name: "Northstar Offices", img: p5, place: "Pune", span: "lg:col-span-5" },
+  { img: p3, alt: "Residence at dusk", span: "lg:col-span-7 lg:row-span-2", pos: "object-center" },
+  { img: p1, alt: "Contemporary residence", span: "lg:col-span-5", pos: "object-center" },
+  { img: p4, alt: "Interior living space", span: "lg:col-span-5", pos: "object-center" },
+  { img: p2, alt: "Garden residence", span: "lg:col-span-7", pos: "object-center" },
+  { img: p5, alt: "Architectural facade", span: "lg:col-span-5", pos: "object-center" },
 ];
 
 const Projects = () => (
@@ -181,20 +181,15 @@ const Projects = () => (
 
     <div className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:auto-rows-[260px]">
       {PROJECTS.map((p, i) => (
-        <Reveal key={p.n} delay={i * 100} className={`group relative overflow-hidden ${p.span}`}>
-          <div className="relative h-full min-h-[420px] lg:min-h-0 w-full overflow-hidden">
-            <img src={p.img} alt={p.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent opacity-90" />
-            <div className="absolute inset-0 flex flex-col justify-between p-6 lg:p-8 text-ivory">
-              <div className="flex items-start justify-between">
-                <span className="font-display text-5xl lg:text-6xl text-ivory/90">{p.n}</span>
-                <ArrowUpRight size={20} className="opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
-              <div>
-                <p className="text-[10px] tracking-label uppercase text-ivory/70">{p.place}</p>
-                <h3 className="mt-1 font-display text-2xl lg:text-3xl">{p.name}</h3>
-              </div>
-            </div>
+        <Reveal key={i} delay={i * 100} className={`group relative overflow-hidden ${p.span}`}>
+          <div className="relative h-full min-h-[420px] lg:min-h-0 w-full overflow-hidden bg-ivory-deep">
+            <img
+              src={p.img}
+              alt={p.alt}
+              loading="lazy"
+              className={`h-full w-full object-cover ${p.pos} transition-transform duration-[1500ms] ease-out group-hover:scale-110`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
           </div>
         </Reveal>
       ))}
