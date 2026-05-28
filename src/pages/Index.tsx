@@ -150,11 +150,11 @@ const Services = () => (
 );
 
 const PROJECTS = [
-  { img: p3, alt: "Residence at dusk", span: "lg:col-span-7 lg:row-span-2", pos: "object-center" },
-  { img: p1, alt: "Contemporary residence", span: "lg:col-span-5", pos: "object-center" },
-  { img: p4, alt: "Interior living space", span: "lg:col-span-5", pos: "object-center" },
-  { img: p2, alt: "Garden residence", span: "lg:col-span-7", pos: "object-center" },
-  { img: p5, alt: "Architectural facade", span: "lg:col-span-5", pos: "object-center" },
+  { img: p1, alt: "Contemporary residence", span: "lg:col-span-7 lg:row-span-2", pos: "object-center" },
+  { img: p3, alt: "Residence at dusk", span: "lg:col-span-5 lg:row-span-2", pos: "object-center" },
+  { img: p2, alt: "Garden residence", span: "lg:col-span-4", pos: "object-center" },
+  { img: p4, alt: "Interior living space", span: "lg:col-span-4", pos: "object-center" },
+  { img: p5, alt: "Architectural facade", span: "lg:col-span-4", pos: "object-top" },
 ];
 
 const Projects = () => (
