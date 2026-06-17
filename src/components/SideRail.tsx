@@ -15,7 +15,12 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
-export const SideRail = () => {
+type Props = {
+  collapsed: boolean;
+  onToggle: () => void;
+};
+
+export const SideRail = ({ collapsed, onToggle }: Props) => {
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
 
@@ -47,41 +52,75 @@ export const SideRail = () => {
   return (
     <>
       {/* Desktop side rail */}
-      <aside className="hidden lg:flex fixed left-0 top-0 z-40 h-screen w-[260px] flex-col justify-between border-r border-ink/10 bg-ivory/80 backdrop-blur-md px-8 py-10">
-        <button onClick={() => go("home")} className="block">
-          <img src={logo} alt="Aasta Lifespace" className="h-9 w-auto" />
-        </button>
-        <nav className="flex flex-col gap-5">
-          {NAV.map((item, i) => {
-            const isActive = active === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => go(item.id)}
-                className={cn(
-                  "group flex items-center gap-4 text-left text-sm font-sans-ui transition-colors",
-                  isActive ? "text-copper" : "text-ink-soft hover:text-ink"
-                )}
-              >
-                <span className="tracking-label text-[10px] tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="relative">
-                  {item.label}
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 h-px bg-copper transition-all duration-500",
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    )}
-                  />
-                </span>
+      <aside
+        className={cn(
+          "hidden lg:flex fixed left-0 top-0 z-40 h-screen flex-col justify-between border-r border-ink/10 bg-ivory/80 backdrop-blur-md transition-[width,padding] duration-500 ease-out",
+          collapsed ? "w-14 px-2 py-6 items-center" : "w-[260px] px-8 py-10"
+        )}
+      >
+        {collapsed ? (
+          <>
+            <button onClick={() => go("home")} aria-label="Home">
+              <img src={logo} alt="Aasta Lifespace" className="h-8 w-auto" />
+            </button>
+            <button
+              onClick={onToggle}
+              aria-label="Open menu"
+              className="grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-copper hover:text-ivory transition-colors"
+            >
+              <Menu size={18} />
+            </button>
+            <span className="text-[9px] tracking-label uppercase text-ink-soft [writing-mode:vertical-rl] rotate-180">
+              Est. 1984
+            </span>
+          </>
+        ) : (
+          <>
+            <div className="flex items-start justify-between">
+              <button onClick={() => go("home")} className="block">
+                <img src={logo} alt="Aasta Lifespace" className="h-9 w-auto" />
               </button>
-            );
-          })}
-        </nav>
-        <p className="text-[10px] tracking-label uppercase text-ink-soft">
-          Est. 1984 — India
-        </p>
+              <button
+                onClick={onToggle}
+                aria-label="Collapse menu"
+                className="-mr-2 grid h-8 w-8 place-items-center rounded-full text-ink-soft hover:bg-ink/5 hover:text-ink transition-colors"
+              >
+                <X size={16} />
+              </button>
+            </div>
+            <nav className="flex flex-col gap-5">
+              {NAV.map((item, i) => {
+                const isActive = active === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => go(item.id)}
+                    className={cn(
+                      "group flex items-center gap-4 text-left text-sm font-sans-ui transition-colors",
+                      isActive ? "text-copper" : "text-ink-soft hover:text-ink"
+                    )}
+                  >
+                    <span className="tracking-label text-[10px] tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="relative">
+                      {item.label}
+                      <span
+                        className={cn(
+                          "absolute -bottom-1 left-0 h-px bg-copper transition-all duration-500",
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        )}
+                      />
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+            <p className="text-[10px] tracking-label uppercase text-ink-soft">
+              Est. 1984 — India
+            </p>
+          </>
+        )}
       </aside>
 
       {/* Mobile top bar */}

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
 
 // ARTE HOMES — Wilson Garden, Bangalore (11)
 import arte01 from "@/assets/arte-01.jpg.asset.json";
@@ -27,7 +27,7 @@ import shri01 from "@/assets/shrinivas-01.jpg.asset.json";
 
 type Slide = { src: string; alt: string; project: string; location: string };
 
-const SLIDES: Slide[] = [
+const RAW: Slide[] = [
   ...[arte01, arte02, arte03, arte04, arte05, arte06, arte07, arte08, arte09, arte10, arte11].map((a, i) => ({
     src: a.url,
     alt: `ARTE Homes view ${i + 1}`,
@@ -48,13 +48,39 @@ const SLIDES: Slide[] = [
   },
 ];
 
+const shuffle = <T,>(arr: T[]): T[] => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
 export const ProjectsCarousel = () => {
   const [active, setActive] = useState<number | null>(null);
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const SLIDES = useMemo(() => shuffle(RAW), []);
+  const autoplay = useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
+  useEffect(() => {
+    if (!api) return;
+    const plugin = autoplay.current;
+    if (active !== null) plugin.stop();
+    else plugin.play();
+  }, [active, api]);
 
   return (
     <>
       <div className="mt-20 -mx-6 lg:-mx-20 px-6 lg:px-20">
-        <Carousel opts={{ align: "start", loop: true }} className="w-full">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[autoplay.current]}
+          setApi={setApi}
+          className="w-full"
+        >
           <CarouselContent className="-ml-4">
             {SLIDES.map((s, i) => (
               <CarouselItem key={i} className="pl-4 basis-[85%] sm:basis-[60%] md:basis-[48%] lg:basis-[38%] xl:basis-[32%]">
@@ -82,13 +108,13 @@ export const ProjectsCarousel = () => {
           <CarouselNext className="hidden md:flex -right-2 lg:-right-6 h-12 w-12 border-ink/20 bg-ivory hover:bg-copper hover:text-ivory hover:border-copper" />
         </Carousel>
         <p className="mt-6 text-center text-[10px] tracking-label uppercase text-ink-soft/70">
-          Swipe or drag — click any image to enlarge
+          Auto-playing — hover to pause, click any image to enlarge
         </p>
       </div>
 
       <Dialog open={active !== null} onOpenChange={(o) => !o && setActive(null)}>
         <DialogContent
-          className="max-w-[96vw] w-[96vw] sm:max-w-6xl border-0 bg-ink/95 p-0 shadow-2xl data-[state=open]:animate-scale-in"
+          className="max-w-[96vw] w-[96vw] sm:max-w-6xl border-0 bg-ink/95 p-0 shadow-2xl [&>button]:top-3 [&>button]:right-3 [&>button]:h-10 [&>button]:w-10 [&>button]:rounded-full [&>button]:bg-ivory/90 [&>button]:text-ink [&>button]:opacity-100 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:hover:bg-copper [&>button]:hover:text-ivory [&>button>svg]:h-5 [&>button>svg]:w-5"
         >
           {active !== null && (
             <div className="relative">
@@ -97,13 +123,6 @@ export const ProjectsCarousel = () => {
                 alt={SLIDES[active].alt}
                 className="w-full h-auto max-h-[85vh] object-contain animate-fade-in"
               />
-              <button
-                onClick={() => setActive(null)}
-                className="absolute top-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-ivory/90 text-ink hover:bg-copper hover:text-ivory transition-colors"
-                aria-label="Close"
-              >
-                <X size={18} />
-              </button>
               <div className="absolute left-0 right-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6 pt-16">
                 <div className="text-[10px] tracking-label uppercase text-copper">{SLIDES[active].location}</div>
                 <div className="mt-1 font-display text-2xl text-ivory">{SLIDES[active].project}</div>
