@@ -112,16 +112,16 @@
   p { font-weight: 300; letter-spacing: -0.003em; }
 
   h1, h2, h3, h4, h5 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
 
   ::selection { background: hsl(var(--copper) / 0.85); color: hsl(var(--ivory)); }
 }
 
 @layer utilities {
-  .font-display { font-family: 'Fraunces', Georgia, serif; }
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
   .font-sans-ui { font-family: 'Manrope', system-ui, sans-serif; }
   .font-italic-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
   .tracking-label { letter-spacing: 0.22em; }
