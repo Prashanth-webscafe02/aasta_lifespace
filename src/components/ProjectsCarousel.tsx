@@ -4,44 +4,44 @@ import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, Car
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 // ARTE HOMES — Wilson Garden, Bangalore (11)
-import arte01 from "@/assets/arte-01.jpg.asset.json";
-import arte02 from "@/assets/arte-02.jpg.asset.json";
-import arte03 from "@/assets/arte-03.jpg.asset.json";
-import arte04 from "@/assets/arte-04.jpg.asset.json";
-import arte05 from "@/assets/arte-05.jpg.asset.json";
-import arte06 from "@/assets/arte-06.jpg.asset.json";
-import arte07 from "@/assets/arte-07.jpg.asset.json";
-import arte08 from "@/assets/arte-08.jpg.asset.json";
-import arte09 from "@/assets/arte-09.jpg.asset.json";
-import arte10 from "@/assets/arte-10.jpg.asset.json";
-import arte11 from "@/assets/arte-11.jpg.asset.json";
+import arte01 from "@/assets/arte-01.jpg";
+import arte02 from "@/assets/arte-02.jpg";
+import arte03 from "@/assets/arte-03.jpg";
+import arte04 from "@/assets/arte-04.jpg";
+import arte05 from "@/assets/arte-05.jpg";
+import arte06 from "@/assets/arte-06.jpg";
+import arte07 from "@/assets/arte-07.jpg";
+import arte08 from "@/assets/arte-08.jpg";
+import arte09 from "@/assets/arte-09.jpg";
+import arte10 from "@/assets/arte-10.jpg";
+import arte11 from "@/assets/arte-11.jpg";
 // Radha Mohan Residence (6)
-import mohan01 from "@/assets/mohan-01.jpg.asset.json";
-import mohan02 from "@/assets/mohan-02.jpg.asset.json";
-import mohan03 from "@/assets/mohan-03.jpg.asset.json";
-import mohan04 from "@/assets/mohan-04.jpg.asset.json";
-import mohan05 from "@/assets/mohan-05.jpg.asset.json";
-import mohan06 from "@/assets/mohan-06.jpg.asset.json";
+import mohan01 from "@/assets/mohan-01.jpg";
+import mohan02 from "@/assets/mohan-02.jpg";
+import mohan03 from "@/assets/mohan-03.jpg";
+import mohan04 from "@/assets/mohan-04.jpg";
+import mohan05 from "@/assets/mohan-05.jpg";
+import mohan06 from "@/assets/mohan-06.jpg";
 // Shrinivas Murthy Residence (1)
-import shri01 from "@/assets/shrinivas-01.jpg.asset.json";
+import shri01 from "@/assets/shrinivas-01.jpg";
 
 type Slide = { src: string; alt: string; project: string; location: string };
 
 const RAW: Slide[] = [
   ...[arte01, arte02, arte03, arte04, arte05, arte06, arte07, arte08, arte09, arte10, arte11].map((a, i) => ({
-    src: a.url,
+    src: a,
     alt: `ARTE Homes view ${i + 1}`,
     project: "ARTE Homes",
     location: "Wilson Garden, Bangalore",
   })),
   ...[mohan01, mohan02, mohan03, mohan04, mohan05, mohan06].map((a, i) => ({
-    src: a.url,
+    src: a,
     alt: `Radha Mohan Residence view ${i + 1}`,
     project: "Radha Mohan Residence",
     location: "Bangalore",
   })),
   {
-    src: shri01.url,
+    src: shri01,
     alt: "Shrinivas Murthy Residence front elevation",
     project: "Shrinivas Murthy Residence",
     location: "Bangalore",
