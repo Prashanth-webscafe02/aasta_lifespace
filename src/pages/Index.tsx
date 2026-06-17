@@ -711,9 +711,25 @@ const Contact = () => {
 };
 
 const Index = () => {
+  const [collapsed, setCollapsed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage.getItem("aasta:rail") === "1";
+  });
+  const toggle = () => {
+    setCollapsed((v) => {
+      const next = !v;
+      try { window.localStorage.setItem("aasta:rail", next ? "1" : "0"); } catch {}
+      return next;
+    });
+  };
   return (
-    <main className="bg-background text-foreground lg:pl-[260px] pt-16 lg:pt-0">
-      <SideRail />
+    <main
+      className={cn(
+        "bg-background text-foreground pt-16 lg:pt-0 transition-[padding] duration-500 ease-out",
+        collapsed ? "lg:pl-14" : "lg:pl-[260px]"
+      )}
+    >
+      <SideRail collapsed={collapsed} onToggle={toggle} />
       <Hero />
       <About />
       <Vision />
