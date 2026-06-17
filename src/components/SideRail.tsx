@@ -8,9 +8,10 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
-  { id: "approach", label: "Approach" },
+  { id: "approach", label: "Process" },
   { id: "pricing", label: "Pricing" },
   { id: "philosophy", label: "Philosophy" },
+  { id: "faqs", label: "FAQs" },
   { id: "contact", label: "Contact" },
 ];
 
