@@ -15,11 +15,7 @@ import { toast } from "@/hooks/use-toast";
 import hero from "@/assets/hero.jpg";
 import about1 from "@/assets/about-1.jpg";
 import about2 from "@/assets/about-2.jpg";
-import p1 from "@/assets/project-1.jpg";
-import p2 from "@/assets/project-2.jpg";
-import p3 from "@/assets/project-3.jpg";
-import p4 from "@/assets/project-4.jpg";
-import p5 from "@/assets/project-5.jpg";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import philosophyImg from "@/assets/philosophy.jpg";
 import logo from "@/assets/aasta-logo.png";
 
@@ -269,14 +265,6 @@ const WhyChoose = () => (
   </section>
 );
 
-const PROJECTS = [
-  { img: p1, alt: "Contemporary residence", span: "lg:col-span-7 lg:row-span-2", pos: "object-center" },
-  { img: p3, alt: "Residence at dusk", span: "lg:col-span-5 lg:row-span-2", pos: "object-center" },
-  { img: p2, alt: "Garden residence", span: "lg:col-span-4", pos: "object-center" },
-  { img: p4, alt: "Interior living space", span: "lg:col-span-4", pos: "object-center" },
-  { img: p5, alt: "Architectural facade", span: "lg:col-span-4", pos: "object-top" },
-];
-
 const Projects = () => (
   <section id="projects" className="relative px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-12 lg:grid-cols-12">
@@ -296,31 +284,7 @@ const Projects = () => (
       </div>
     </div>
 
-    <div className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:auto-rows-[260px]">
-      {PROJECTS.map((p, i) => (
-        <Reveal key={i} delay={i * 100} className={`group relative overflow-hidden ${p.span}`}>
-          <div className="relative h-full min-h-[420px] lg:min-h-0 w-full overflow-hidden bg-ivory-deep">
-            <img
-              src={p.img}
-              alt={p.alt}
-              loading="lazy"
-              className={`h-full w-full object-cover ${p.pos} transition-transform duration-[1500ms] ease-out group-hover:scale-110`}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-          </div>
-        </Reveal>
-      ))}
-    </div>
-
-    <Reveal delay={200}>
-      <button
-        onClick={() => scrollToId("contact")}
-        className="group mt-16 inline-flex items-center gap-3 border-t border-ink/20 pt-5 text-[10px] tracking-label uppercase text-ink hover:text-copper transition-colors"
-      >
-        Explore Projects
-        <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-      </button>
-    </Reveal>
+    <ProjectsCarousel />
   </section>
 );
 
