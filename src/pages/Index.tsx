@@ -11,6 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 import hero from "@/assets/hero.jpg";
 import about1 from "@/assets/about-1.jpg";
