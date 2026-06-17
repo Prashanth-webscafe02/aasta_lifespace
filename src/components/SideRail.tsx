@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/aasta-logo.png";
+import bird from "@/assets/aasta-bird.png.asset.json";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -61,7 +62,7 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
         {collapsed ? (
           <>
             <button onClick={() => go("home")} aria-label="Home">
-              <img src={logo} alt="Aasta Lifespace" className="h-8 w-auto" />
+              <img src={bird.url} alt="Aasta Lifespace" className="h-8 w-auto" />
             </button>
             <button
               onClick={onToggle}
