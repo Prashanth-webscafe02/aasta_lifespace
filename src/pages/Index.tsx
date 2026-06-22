@@ -23,7 +23,7 @@ import logo from "@/assets/aasta-logo.png";
 const SectionLabel = ({ index, children }: { index: string; children: string }) => (
   <div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper">
     <span className="h-px w-6 bg-copper" />
-    <span>{index} — {children}</span>
+    <span>{index} · {children}</span>
   </div>
 );
 
