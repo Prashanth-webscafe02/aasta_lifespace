@@ -118,7 +118,7 @@ const About = () => (
         <Reveal delay={120}><p>What began as a passion for quality construction has evolved into a multidisciplinary practice offering Architecture, Construction, Interiors, and Turnkey Project Execution.</p></Reveal>
         <Reveal delay={240}><p>Over the last four decades, we have helped families build homes, businesses create workspaces, and investors develop projects that stand the test of time.</p></Reveal>
         <Reveal delay={360}>
-          <p>While materials, technologies, and design trends have changed, our commitment remains the same — <span className="text-ink">to build every project with integrity, attention to detail, and complete accountability.</span></p>
+          <p>While materials, technologies, and design trends have changed, our commitment remains the same: <span className="text-ink">to build every project with integrity, attention to detail, and complete accountability.</span></p>
         </Reveal>
       </div>
     </div>
@@ -141,7 +141,7 @@ const About = () => (
 const Vision = () => (
   <section id="vision" className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44">
     <div className="mx-auto max-w-3xl text-center">
-      <Reveal><div className="inline-flex items-center gap-3 text-[10px] tracking-label uppercase text-copper"><span className="h-px w-6 bg-copper" />02 — Our Vision<span className="h-px w-6 bg-copper" /></div></Reveal>
+      <Reveal><div className="inline-flex items-center gap-3 text-[10px] tracking-label uppercase text-copper"><span className="h-px w-6 bg-copper" />02 · Our Vision<span className="h-px w-6 bg-copper" /></div></Reveal>
       <Reveal delay={120}>
         <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
           Creating Spaces That
@@ -325,7 +325,7 @@ const Approach = () => (
   <section id="approach" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />06 — Process</div></Reveal>
+        <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />06 · Process</div></Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05]">
             Your journey
@@ -372,13 +372,13 @@ const Founder = () => (
         </Reveal>
         <Reveal delay={240}>
           <div className="mt-8 space-y-5 text-ink-soft text-base lg:text-[17px] leading-relaxed">
-            <p>When we began Aasta Lifespace in 1984, our intent was simple — to build the kind of homes we would be proud to live in ourselves.</p>
+            <p>When we began Aasta Lifespace in 1984, our intent was simple: to build the kind of homes we would be proud to live in ourselves.</p>
             <p>Four decades on, that intent has not changed. Every wall raised, every detail chosen, every handover delivered carries the same care we placed in our very first project.</p>
-            <p>We are grateful to the families and businesses who have trusted us across generations — and equally excited about the spaces still to come.</p>
+            <p>We are grateful to the families and businesses who have trusted us across generations, and equally excited about the spaces still to come.</p>
           </div>
         </Reveal>
         <Reveal delay={360}>
-          <p className="mt-8 font-italic-serif text-2xl text-copper">— The Founder, Aasta Lifespace</p>
+          <p className="mt-8 font-italic-serif text-2xl text-copper">– The Founder, Aasta Lifespace</p>
         </Reveal>
       </div>
     </div>
@@ -402,7 +402,7 @@ const TIERS = [
     tag: "Design and build, as one",
     price: "₹2,650",
     unit: "per sq. ft.",
-    body: "Our most sought-after offering — architecture, interiors, and execution moving in concert.",
+    body: "Our most sought-after offering: architecture, interiors, and execution moving in concert.",
     features: ["Bespoke architectural design", "Curated material palette", "Imported fixtures & joinery", "Dedicated project lead", "24-month warranty"],
     featured: true,
   },
@@ -533,7 +533,7 @@ const Philosophy = () => (
 );
 
 const TESTIMONIALS = [
-  { quote: "Aasta took the stress out of building our home. Every commitment they made was honoured — timelines, finishes, and the small details.", name: "Sample Client", role: "Villa, Bengaluru" },
+  { quote: "Aasta took the stress out of building our home. Every commitment they made was honoured: timelines, finishes, and the small details.", name: "Sample Client", role: "Villa, Bengaluru" },
   { quote: "Working with one team for design and construction made everything calmer. The site was always organised and we always knew what came next.", name: "Sample Client", role: "Residence, Mysuru" },
   { quote: "Forty years of experience genuinely shows. The judgement calls they made on materials and structure were exactly right.", name: "Sample Client", role: "Commercial Project" },
 ];
@@ -578,7 +578,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do you provide architecture and construction together?",
-    a: "Yes. Our Design & Build offering provides architecture, structural design, construction, and interiors under a single accountable team — eliminating coordination gaps between designer and contractor.",
+    a: "Yes. Our Design & Build offering provides architecture, structural design, construction, and interiors under a single accountable team, eliminating coordination gaps between designer and contractor.",
   },
   {
     q: "How long does a villa project take?",
@@ -586,11 +586,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do you undertake turnkey interiors?",
-    a: "Yes — modular kitchens, wardrobes, custom furniture, lighting, false ceilings, and soft furnishings, delivered ready to move in. We also take on interiors as standalone projects for existing homes.",
+    a: "Yes. Modular kitchens, wardrobes, custom furniture, lighting, false ceilings, and soft furnishings, delivered ready to move in. We also take on interiors as standalone projects for existing homes.",
   },
   {
     q: "Which cities do you serve?",
-    a: "We are headquartered in Bengaluru and undertake projects across Karnataka and select cities in South India. For projects elsewhere, please reach out — we evaluate every enquiry on merit.",
+    a: "We are headquartered in Bengaluru and undertake projects across Karnataka and select cities in South India. For projects elsewhere, please reach out; we evaluate every enquiry on merit.",
   },
 ];
 
@@ -636,7 +636,7 @@ const Contact = () => {
     <section id="contact" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />12 — Contact</div></Reveal>
+          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />12 · Contact</div></Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
               Let's build something

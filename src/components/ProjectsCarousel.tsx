@@ -3,7 +3,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-// ARTE HOMES — Wilson Garden, Bangalore (11)
+// ARTE HOMES · Wilson Garden, Bangalore (11)
 import arte01 from "@/assets/arte-01.jpg";
 import arte02 from "@/assets/arte-02.jpg";
 import arte03 from "@/assets/arte-03.jpg";
@@ -48,21 +48,35 @@ const RAW: Slide[] = [
   },
 ];
 
-const shuffle = <T,>(arr: T[]): T[] => {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+// Interleave slides by project so the same project never plays back-to-back.
+const interleaveByProject = (slides: Slide[]): Slide[] => {
+  const groups = new Map<string, Slide[]>();
+  slides.forEach((s) => {
+    if (!groups.has(s.project)) groups.set(s.project, []);
+    groups.get(s.project)!.push(s);
+  });
+  const buckets = Array.from(groups.values());
+  const out: Slide[] = [];
+  let added = true;
+  while (added) {
+    added = false;
+    for (const b of buckets) {
+      const next = b.shift();
+      if (next) {
+        out.push(next);
+        added = true;
+      }
+    }
   }
-  return a;
+  return out;
 };
 
 export const ProjectsCarousel = () => {
   const [active, setActive] = useState<number | null>(null);
   const [api, setApi] = useState<CarouselApi | null>(null);
-  const SLIDES = useMemo(() => shuffle(RAW), []);
+  const SLIDES = useMemo(() => interleaveByProject(RAW), []);
   const autoplay = useRef(
-    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })
+    Autoplay({ delay: 4200, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   useEffect(() => {
@@ -108,7 +122,7 @@ export const ProjectsCarousel = () => {
           <CarouselNext className="hidden md:flex -right-2 lg:-right-6 h-12 w-12 border-ink/20 bg-ivory hover:bg-copper hover:text-ivory hover:border-copper" />
         </Carousel>
         <p className="mt-6 text-center text-[10px] tracking-label uppercase text-ink-soft/70">
-          Auto-playing — hover to pause, click any image to enlarge
+          Auto-playing. Hover to pause, click any image to enlarge.
         </p>
       </div>
 
