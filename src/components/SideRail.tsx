@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import logo from "@/assets/aasta-logo.png";
 import bird from "@/assets/aasta-bird.png";
 import { cn } from "@/lib/utils";
@@ -86,7 +86,7 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
                 aria-label="Collapse menu"
                 className="-mr-2 grid h-8 w-8 place-items-center rounded-full text-ink-soft hover:bg-ink/5 hover:text-ink transition-colors"
               >
-                <X size={16} />
+                <Menu size={16} />
               </button>
             </div>
             <nav className="flex flex-col gap-5">
@@ -118,7 +118,7 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
               })}
             </nav>
             <p className="text-[10px] tracking-label uppercase text-ink-soft">
-              Est. 1984 — India
+              Est. 1984 · India
             </p>
           </>
         )}
@@ -134,7 +134,7 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
           className="text-ink"
           aria-label="Toggle menu"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          <Menu size={22} />
         </button>
       </header>
 
