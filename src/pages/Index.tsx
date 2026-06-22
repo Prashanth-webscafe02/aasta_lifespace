@@ -50,6 +50,9 @@ const Hero = () => {
         className="absolute inset-0 h-full w-full object-cover"
         style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
       />
+      {/* Legibility scrim: dark gradient bottom-left so headline text reads cleanly */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-ink/85 via-ink/55 to-ink/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
       <div className="relative z-10 flex min-h-screen flex-col justify-end px-6 pb-20 lg:px-20 lg:pb-28">
         <Reveal>
           <p className="mb-6 text-[10px] tracking-label uppercase text-ivory/80">
