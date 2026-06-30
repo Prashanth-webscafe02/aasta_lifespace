@@ -60,10 +60,8 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal delay={150}>
-          <FloatTitle as="h1" className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[1.02] text-ivory" fromX={-160}>
-            Building <span className="font-italic-serif text-copper-soft">Dream Homes</span>
-            <br />
-            <span className="text-ivory">Since 1984.</span>
+          <FloatTitle as="h1" className="font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] text-ivory" fromX={-160}>
+            Leading <span className="font-italic-serif text-copper-soft">Construction Company</span> in Bangalore for Homes, Villas & Commercial Projects
           </FloatTitle>
         </Reveal>
         <Reveal delay={350}>
