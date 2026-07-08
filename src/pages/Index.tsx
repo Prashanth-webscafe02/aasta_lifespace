@@ -292,14 +292,14 @@ const Projects = () => (
 
 const STATS = [
   { value: "40+", label: "Years of Experience" },
-  { value: "500+", label: "Projects Completed" },
-  { value: "XX Mn", label: "Sq. Ft. Delivered" },
-  { value: "XX", label: "Cities Served" },
+  { value: "125+", label: "Projects Completed" },
+  { value: "16 Lakh+", label: "Sq. Ft. Delivered" },
+  { value: "4+", label: "Cities Served" },
 ];
 
 const Stats = () => (
-  // TODO: replace "XX Mn" and "XX" with real figures
   <section id="stats" className="relative bg-ink text-ivory px-6 py-24 lg:px-20 lg:py-32">
+
     <div className="grid grid-cols-2 gap-y-12 gap-x-8 lg:grid-cols-4">
       {STATS.map((s, i) => (
         <Reveal key={s.label} delay={i * 120}>
