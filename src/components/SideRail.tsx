@@ -13,7 +13,9 @@ const NAV = [
   { id: "pricing", label: "Pricing" },
   { id: "philosophy", label: "Philosophy" },
   { id: "faqs", label: "FAQs" },
+  { id: "careers", label: "Careers" },
   { id: "contact", label: "Contact" },
+
 ];
 
 type Props = {

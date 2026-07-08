@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Check, Quote } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, Quote, MessageCircle, Upload } from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
 import { FloatTitle } from "@/components/FloatTitle";
@@ -292,14 +292,14 @@ const Projects = () => (
 
 const STATS = [
   { value: "40+", label: "Years of Experience" },
-  { value: "500+", label: "Projects Completed" },
-  { value: "XX Mn", label: "Sq. Ft. Delivered" },
-  { value: "XX", label: "Cities Served" },
+  { value: "125+", label: "Projects Completed" },
+  { value: "16 Lakh+", label: "Sq. Ft. Delivered" },
+  { value: "4+", label: "Cities Served" },
 ];
 
 const Stats = () => (
-  // TODO: replace "XX Mn" and "XX" with real figures
   <section id="stats" className="relative bg-ink text-ivory px-6 py-24 lg:px-20 lg:py-32">
+
     <div className="grid grid-cols-2 gap-y-12 gap-x-8 lg:grid-cols-4">
       {STATS.map((s, i) => (
         <Reveal key={s.label} delay={i * 120}>
@@ -626,7 +626,102 @@ const FAQs = () => (
   </section>
 );
 
+const Careers = () => {
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({ title: "Application received", description: "Thank you for your interest. Our team will review and reach out." });
+    (e.target as HTMLFormElement).reset();
+  };
+  return (
+    <section id="careers" className="relative px-6 py-32 lg:px-20 lg:py-44">
+      <div className="grid gap-16 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <Reveal><SectionLabel index="12">Careers</SectionLabel></Reveal>
+          <Reveal delay={120}>
+            <FloatTitle className="mt-8 font-display text-5xl lg:text-6xl leading-[1.02] text-ink">
+              Build with
+              <br />
+              <span className="font-italic-serif text-copper">a legacy studio.</span>
+            </FloatTitle>
+          </Reveal>
+          <Reveal delay={240}>
+            <p className="mt-8 text-ink-soft text-lg leading-relaxed max-w-md">
+              We're always looking for architects, engineers, project managers, site supervisors, and craft specialists who care about the details. Share your story below.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={300} className="lg:col-span-7">
+          <form onSubmit={onSubmit} className="grid gap-6 sm:grid-cols-2">
+            {[
+              { name: "name", label: "Full name", type: "text", full: false, required: true },
+              { name: "email", label: "Email", type: "email", full: false, required: true },
+              { name: "phone", label: "Phone", type: "tel", full: false, required: true },
+              { name: "role", label: "Role of interest", type: "text", full: false, required: true },
+              { name: "experience", label: "Years of experience", type: "text", full: false, required: false },
+              { name: "location", label: "Current location", type: "text", full: false, required: false },
+            ].map((f) => (
+              <div key={f.name} className={f.full ? "sm:col-span-2" : ""}>
+                <label className="text-[10px] tracking-label uppercase text-ink-soft">{f.label}</label>
+                <input
+                  required={f.required}
+                  type={f.type}
+                  name={f.name}
+                  className="mt-2 w-full bg-transparent border-b border-ink/20 py-3 text-ink focus:border-copper focus:outline-none transition-colors"
+                />
+              </div>
+            ))}
+            <div className="sm:col-span-2">
+              <label className="text-[10px] tracking-label uppercase text-ink-soft">Cover note</label>
+              <textarea
+                name="cover"
+                rows={4}
+                placeholder="Tell us about the work you're proud of."
+                className="mt-2 w-full bg-transparent border-b border-ink/20 py-3 text-ink placeholder:text-ink/30 focus:border-copper focus:outline-none transition-colors resize-none"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="text-[10px] tracking-label uppercase text-ink-soft flex items-center gap-2">
+                <Upload size={12} /> Resume (PDF)
+              </label>
+              <input
+                type="file"
+                name="resume"
+                accept=".pdf,.doc,.docx"
+                className="mt-2 w-full text-sm text-ink-soft file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-ink file:text-ivory file:text-[10px] file:tracking-label file:uppercase hover:file:bg-copper file:cursor-pointer file:transition-colors"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-3 bg-ink text-ivory px-8 py-4 text-[10px] tracking-label uppercase transition-all hover:bg-copper"
+              >
+                Submit application
+                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </button>
+            </div>
+          </form>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+const WhatsAppFloat = () => (
+  <a
+    href="https://wa.me/919148837834?text=Hi%20Aasta%20Lifespace%2C%20I%27d%20like%20to%20enquire%20about%20your%20services."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    className="fixed bottom-6 right-6 z-50 group flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+  >
+    <MessageCircle size={20} className="fill-white" />
+    <span className="text-[11px] tracking-label uppercase font-medium hidden sm:inline">WhatsApp</span>
+  </a>
+);
+
 const Contact = () => {
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Thank you", description: "We'll be in touch shortly to begin the conversation." });
@@ -637,7 +732,7 @@ const Contact = () => {
     <section id="contact" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />12 · Contact</div></Reveal>
+          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />13 · Contact</div></Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
               Let's build something
@@ -650,16 +745,21 @@ const Contact = () => {
               Whether you're planning your dream home, a luxury villa, or a commercial development, our team is ready to guide you from concept to completion. Share your vision with us and let's explore how we can bring it to life.
             </p>
           </Reveal>
-          <Reveal delay={360} className="mt-16 grid gap-8 sm:grid-cols-2 max-w-lg text-sm">
+          <Reveal delay={360} className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
             <div>
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Studio</p>
               <p className="mt-2 text-ivory/85">Bengaluru, India</p>
             </div>
             <div>
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Enquiries</p>
-              <p className="mt-2 text-ivory/85">studio@aastalifespace.com</p>
+              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">studio@aastalifespace.com</a>
+            </div>
+            <div>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">Call</p>
+              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">+91 91488 37834</a>
             </div>
           </Reveal>
+
         </div>
 
         <Reveal delay={300} className="lg:col-span-5">
@@ -745,8 +845,11 @@ const Index = () => {
       <Philosophy />
       <Testimonials />
       <FAQs />
+      <Careers />
       <Contact />
+      <WhatsAppFloat />
     </main>
+
   );
 };
 
