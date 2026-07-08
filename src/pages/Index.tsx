@@ -626,7 +626,102 @@ const FAQs = () => (
   </section>
 );
 
+const Careers = () => {
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({ title: "Application received", description: "Thank you for your interest. Our team will review and reach out." });
+    (e.target as HTMLFormElement).reset();
+  };
+  return (
+    <section id="careers" className="relative px-6 py-32 lg:px-20 lg:py-44">
+      <div className="grid gap-16 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <Reveal><SectionLabel index="12">Careers</SectionLabel></Reveal>
+          <Reveal delay={120}>
+            <FloatTitle className="mt-8 font-display text-5xl lg:text-6xl leading-[1.02] text-ink">
+              Build with
+              <br />
+              <span className="font-italic-serif text-copper">a legacy studio.</span>
+            </FloatTitle>
+          </Reveal>
+          <Reveal delay={240}>
+            <p className="mt-8 text-ink-soft text-lg leading-relaxed max-w-md">
+              We're always looking for architects, engineers, project managers, site supervisors, and craft specialists who care about the details. Share your story below.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={300} className="lg:col-span-7">
+          <form onSubmit={onSubmit} className="grid gap-6 sm:grid-cols-2">
+            {[
+              { name: "name", label: "Full name", type: "text", full: false, required: true },
+              { name: "email", label: "Email", type: "email", full: false, required: true },
+              { name: "phone", label: "Phone", type: "tel", full: false, required: true },
+              { name: "role", label: "Role of interest", type: "text", full: false, required: true },
+              { name: "experience", label: "Years of experience", type: "text", full: false, required: false },
+              { name: "location", label: "Current location", type: "text", full: false, required: false },
+            ].map((f) => (
+              <div key={f.name} className={f.full ? "sm:col-span-2" : ""}>
+                <label className="text-[10px] tracking-label uppercase text-ink-soft">{f.label}</label>
+                <input
+                  required={f.required}
+                  type={f.type}
+                  name={f.name}
+                  className="mt-2 w-full bg-transparent border-b border-ink/20 py-3 text-ink focus:border-copper focus:outline-none transition-colors"
+                />
+              </div>
+            ))}
+            <div className="sm:col-span-2">
+              <label className="text-[10px] tracking-label uppercase text-ink-soft">Cover note</label>
+              <textarea
+                name="cover"
+                rows={4}
+                placeholder="Tell us about the work you're proud of."
+                className="mt-2 w-full bg-transparent border-b border-ink/20 py-3 text-ink placeholder:text-ink/30 focus:border-copper focus:outline-none transition-colors resize-none"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="text-[10px] tracking-label uppercase text-ink-soft flex items-center gap-2">
+                <Upload size={12} /> Resume (PDF)
+              </label>
+              <input
+                type="file"
+                name="resume"
+                accept=".pdf,.doc,.docx"
+                className="mt-2 w-full text-sm text-ink-soft file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-ink file:text-ivory file:text-[10px] file:tracking-label file:uppercase hover:file:bg-copper file:cursor-pointer file:transition-colors"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-3 bg-ink text-ivory px-8 py-4 text-[10px] tracking-label uppercase transition-all hover:bg-copper"
+              >
+                Submit application
+                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </button>
+            </div>
+          </form>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+const WhatsAppFloat = () => (
+  <a
+    href="https://wa.me/919148837834?text=Hi%20Aasta%20Lifespace%2C%20I%27d%20like%20to%20enquire%20about%20your%20services."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    className="fixed bottom-6 right-6 z-50 group flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+  >
+    <MessageCircle size={20} className="fill-white" />
+    <span className="text-[11px] tracking-label uppercase font-medium hidden sm:inline">WhatsApp</span>
+  </a>
+);
+
 const Contact = () => {
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Thank you", description: "We'll be in touch shortly to begin the conversation." });
