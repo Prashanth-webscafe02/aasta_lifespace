@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Check, Quote } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, Quote, MessageCircle, Upload } from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
 import { FloatTitle } from "@/components/FloatTitle";
