@@ -845,8 +845,11 @@ const Index = () => {
       <Philosophy />
       <Testimonials />
       <FAQs />
+      <Careers />
       <Contact />
+      <WhatsAppFloat />
     </main>
+
   );
 };
 
