@@ -732,7 +732,7 @@ const Contact = () => {
     <section id="contact" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />12 · Contact</div></Reveal>
+          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />13 · Contact</div></Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
               Let's build something
