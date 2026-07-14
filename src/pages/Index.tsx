@@ -534,9 +534,9 @@ const Philosophy = () => (
 );
 
 const TESTIMONIALS = [
-  { quote: "Aasta took the stress out of building our home. Every commitment they made was honoured: timelines, finishes, and the small details.", name: "Sample Client", role: "Villa, Bengaluru" },
-  { quote: "Working with one team for design and construction made everything calmer. The site was always organised and we always knew what came next.", name: "Sample Client", role: "Residence, Mysuru" },
-  { quote: "Forty years of experience genuinely shows. The judgement calls they made on materials and structure were exactly right.", name: "Sample Client", role: "Commercial Project" },
+  { quote: "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.", name: "Prasanna", role: "Lotus Arena, Doddaballapur" },
+  { quote: "We had a very clear idea of how we wanted our farmhouse to feel, and Aasta Lifespace brought that vision to life beautifully. They understood what mattered to us and never made us feel like just another project.", name: "Anuradha K", role: "Farmhouse, Bidadi" },
+  { quote: "I wanted a builder who would be transparent and keep their word, and that's exactly what I experienced with Aasta Lifespace. The team was professional, approachable, and always ready to help.", name: "Srinivas Murthy", role: "Residence, Indira Nagar" },
 ];
 
 const Testimonials = () => (
