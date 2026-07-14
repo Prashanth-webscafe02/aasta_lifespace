@@ -534,9 +534,9 @@ const Philosophy = () => (
 );
 
 const TESTIMONIALS = [
-  { quote: "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.", name: "Prasanna", role: "Lotus Arena, Doddaballapur" },
-  { quote: "We had a very clear idea of how we wanted our farmhouse to feel, and Aasta Lifespace brought that vision to life beautifully. They understood what mattered to us and never made us feel like just another project.", name: "Anuradha K", role: "Farmhouse, Bidadi" },
-  { quote: "I wanted a builder who would be transparent and keep their word, and that's exactly what I experienced with Aasta Lifespace. The team was professional, approachable, and always ready to help.", name: "Srinivas Murthy", role: "Residence, Indira Nagar" },
+  { quote: "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.", name: "Mr. Prasanna", role: "Lotus Arena, Doddaballapur" },
+  { quote: "We had a very clear idea of how we wanted our farmhouse to feel, and Aasta Lifespace brought that vision to life beautifully. They understood what mattered to us and never made us feel like just another project.", name: "Mrs. Anuradha K", role: "Farmhouse, Bidadi" },
+  { quote: "I wanted a builder who would be transparent and keep their word, and that's exactly what I experienced with Aasta Lifespace. The team was professional, approachable, and always ready to help.", name: "Mr. Srinivas Murthy", role: "Residence, Indira Nagar" },
 ];
 
 const Testimonials = () => (
