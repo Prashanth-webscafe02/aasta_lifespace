@@ -745,18 +745,18 @@ const Contact = () => {
               Whether you're planning your dream home, a luxury villa, or a commercial development, our team is ready to guide you from concept to completion. Share your vision with us and let's explore how we can bring it to life.
             </p>
           </Reveal>
-          <Reveal delay={360} className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
-            <div>
+          <Reveal delay={360} className="mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Studio</p>
               <p className="mt-2 text-ivory/85">Bengaluru, India</p>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Enquiries</p>
-              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">studio@aastalifespace.com</a>
+              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors break-all">studio@aastalifespace.com</a>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Call</p>
-              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">+91 91488 37834</a>
+              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors whitespace-nowrap">+91 91488 37834</a>
             </div>
           </Reveal>
 
