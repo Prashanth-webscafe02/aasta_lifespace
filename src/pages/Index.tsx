@@ -799,9 +799,13 @@ const Contact = () => {
         </Reveal>
       </div>
 
-      <footer className="mt-32 pt-10 border-t border-ivory/15 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <img src={logo} alt="Aasta Lifespace" className="h-8 w-auto brightness-0 invert opacity-80" />
-        <div className="flex flex-wrap gap-x-8 gap-y-2 text-[10px] tracking-label uppercase text-ivory/50">
+      <footer className="mt-32 pt-10 border-t border-ivory/15 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <img
+          src={logo}
+          alt="Aasta Lifespace"
+          className="h-6 sm:h-7 md:h-8 w-auto max-w-[180px] sm:max-w-[220px] object-contain brightness-0 invert opacity-80"
+        />
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] tracking-label uppercase text-ivory/50">
           <span>© {new Date().getFullYear()} Aasta Lifespace</span>
           <span>Instagram</span>
           <span>LinkedIn</span>
