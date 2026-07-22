@@ -745,18 +745,18 @@ const Contact = () => {
               Whether you're planning your dream home, a luxury villa, or a commercial development, our team is ready to guide you from concept to completion. Share your vision with us and let's explore how we can bring it to life.
             </p>
           </Reveal>
-          <Reveal delay={360} className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
-            <div>
+          <Reveal delay={360} className="mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Studio</p>
               <p className="mt-2 text-ivory/85">Bengaluru, India</p>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Enquiries</p>
-              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">studio@aastalifespace.com</a>
+              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors break-all">studio@aastalifespace.com</a>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Call</p>
-              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors">+91 91488 37834</a>
+              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors whitespace-nowrap">+91 91488 37834</a>
             </div>
           </Reveal>
 
@@ -799,9 +799,13 @@ const Contact = () => {
         </Reveal>
       </div>
 
-      <footer className="mt-32 pt-10 border-t border-ivory/15 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <img src={logo} alt="Aasta Lifespace" className="h-8 w-auto brightness-0 invert opacity-80" />
-        <div className="flex flex-wrap gap-x-8 gap-y-2 text-[10px] tracking-label uppercase text-ivory/50">
+      <footer className="mt-32 pt-10 border-t border-ivory/15 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <img
+          src={logo}
+          alt="Aasta Lifespace"
+          className="h-6 sm:h-7 md:h-8 w-auto max-w-[180px] sm:max-w-[220px] object-contain brightness-0 invert opacity-80"
+        />
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] tracking-label uppercase text-ivory/50">
           <span>© {new Date().getFullYear()} Aasta Lifespace</span>
           <span>Instagram</span>
           <span>LinkedIn</span>
