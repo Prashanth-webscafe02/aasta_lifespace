@@ -807,8 +807,22 @@ const Contact = () => {
         />
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10px] tracking-label uppercase text-ivory/50">
           <span>© {new Date().getFullYear()} Aasta Lifespace</span>
-          <span>Instagram</span>
-          <span>LinkedIn</span>
+          <a
+            href="https://www.facebook.com/profile.php?id=61591378105753"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-ivory"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/aasta_lifespace/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-ivory"
+          >
+            Instagram
+          </a>
           <span>Privacy</span>
         </div>
       </footer>
