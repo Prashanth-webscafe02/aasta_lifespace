@@ -766,6 +766,10 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Aasta Lifespace on Facebook"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+                  }}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
                 >
                   <Facebook size={15} />
@@ -775,6 +779,10 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Aasta Lifespace on Instagram"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+                  }}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
                 >
                   <Instagram size={15} />
@@ -835,6 +843,10 @@ const Contact = () => {
             href="https://www.facebook.com/profile.php?id=61591378105753"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+            }}
             className="transition-colors hover:text-ivory"
           >
             Facebook
@@ -843,6 +855,10 @@ const Contact = () => {
             href="https://www.instagram.com/aasta_lifespace/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+            }}
             className="transition-colors hover:text-ivory"
           >
             Instagram
