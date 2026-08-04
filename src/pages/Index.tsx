@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Check, Quote, MessageCircle, Upload } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, Quote, MessageCircle, Upload, Facebook, Instagram } from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
 import { FloatTitle } from "@/components/FloatTitle";
@@ -758,6 +758,38 @@ const Contact = () => {
               <p className="text-[10px] tracking-label uppercase text-ivory/50">Call</p>
               <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors whitespace-nowrap">+91 91488 37834</a>
             </div>
+            <div>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">Follow</p>
+              <div className="mt-2 flex items-center gap-3">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61591378105753"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Aasta Lifespace on Facebook"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+                  }}
+                  className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
+                >
+                  <Facebook size={15} />
+                </a>
+                <a
+                  href="https://www.instagram.com/aasta_lifespace/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Aasta Lifespace on Instagram"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+                  }}
+                  className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
+                >
+                  <Instagram size={15} />
+                </a>
+              </div>
+
+            </div>
           </Reveal>
 
         </div>
@@ -811,6 +843,10 @@ const Contact = () => {
             href="https://www.facebook.com/profile.php?id=61591378105753"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+            }}
             className="transition-colors hover:text-ivory"
           >
             Facebook
@@ -819,6 +855,10 @@ const Contact = () => {
             href="https://www.instagram.com/aasta_lifespace/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+            }}
             className="transition-colors hover:text-ivory"
           >
             Instagram
