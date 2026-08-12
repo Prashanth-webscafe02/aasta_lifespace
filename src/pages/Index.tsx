@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Check, Quote, MessageCircle, Upload, Facebook, Instagram } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Check,
+  Quote,
+  MessageCircle,
+  Upload,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 import { SideRail } from "@/components/SideRail";
 import { Reveal } from "@/components/Reveal";
 import { FloatTitle } from "@/components/FloatTitle";
@@ -20,10 +29,18 @@ import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import philosophyImg from "@/assets/philosophy.jpg";
 import logo from "@/assets/aasta-logo.png";
 
-const SectionLabel = ({ index, children }: { index: string; children: string }) => (
+const SectionLabel = ({
+  index,
+  children,
+}: {
+  index: string;
+  children: string;
+}) => (
   <div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper">
     <span className="h-px w-6 bg-copper" />
-    <span>{index} · {children}</span>
+    <span>
+      {index} · {children}
+    </span>
   </div>
 );
 
@@ -31,7 +48,10 @@ const scrollToId = (id: string) => {
   const el = document.getElementById(id);
   if (!el) return;
   const offset = window.innerWidth >= 1024 ? 0 : 72;
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
+  window.scrollTo({
+    top: el.getBoundingClientRect().top + window.scrollY - offset,
+    behavior: "smooth",
+  });
 };
 
 const Hero = () => {
@@ -43,7 +63,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden vignette">
+    <section
+      id="home"
+      className="relative min-h-screen w-full overflow-hidden vignette"
+    >
       <img
         src={hero}
         alt="Luxury villa by Aasta Lifespace at golden hour"
@@ -60,18 +83,30 @@ const Hero = () => {
           </p>
         </Reveal>
         <Reveal delay={150}>
-          <FloatTitle as="h1" className="font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] text-ivory" fromX={-160}>
-            Leading <span className="font-italic-serif text-copper-soft">Construction Company</span> in Bangalore for Homes, Villas & Commercial Projects
+          <FloatTitle
+            as="h1"
+            className="font-display text-[clamp(2.5rem,6vw,5.5rem)] leading-[1.02] text-ivory"
+            fromX={-160}
+          >
+            Leading{" "}
+            <span className="font-italic-serif text-copper-soft">
+              Construction Company
+            </span>{" "}
+            in Bangalore for Homes, Villas & Commercial Projects
           </FloatTitle>
         </Reveal>
         <Reveal delay={350}>
           <p className="mt-8 max-w-2xl text-base lg:text-lg text-ivory/80 leading-relaxed">
-            From architectural design and construction to complete interiors, Aasta Lifespace creates homes, villas, and commercial spaces that are thoughtfully designed, expertly built, and made to last for generations.
+            From architectural design and construction to complete interiors,
+            Aasta Lifespace creates homes, villas, and commercial spaces that
+            are thoughtfully designed, expertly built, and made to last for
+            generations.
           </p>
         </Reveal>
         <Reveal delay={450}>
           <p className="mt-5 max-w-2xl text-sm lg:text-base text-ivory/60 leading-relaxed">
-            40+ years of experience. End-to-end execution. One trusted team for Architecture, Construction, Interiors, and Project Management.
+            40+ years of experience. End-to-end execution. One trusted team for
+            Architecture, Construction, Interiors, and Project Management.
           </p>
         </Reveal>
         <Reveal delay={600}>
@@ -81,18 +116,27 @@ const Hero = () => {
               className="group inline-flex items-center gap-3 bg-copper px-7 py-4 text-[10px] tracking-label uppercase text-ivory transition-all hover:bg-copper-soft hover:-translate-y-0.5"
             >
               Start Your Project
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
             </button>
             <button
               onClick={() => scrollToId("projects")}
               className="group inline-flex items-center gap-3 border border-ivory/40 px-7 py-4 text-[10px] tracking-label uppercase text-ivory transition-all hover:border-copper-soft hover:text-copper-soft"
             >
               View Our Work
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
             </button>
           </div>
         </Reveal>
-        <Reveal delay={750} className="mt-12 flex items-center gap-3 text-ivory/70">
+        <Reveal
+          delay={750}
+          className="mt-12 flex items-center gap-3 text-ivory/70"
+        >
           <ArrowDown size={16} className="animate-bounce" />
           <span className="text-[10px] tracking-label uppercase">Scroll</span>
         </Reveal>
@@ -105,21 +149,55 @@ const About = () => (
   <section id="about" className="relative px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-16 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><SectionLabel index="01">About Us</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="01">About Us</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Four Decades of
             <br />
-            <span className="font-italic-serif text-copper">Building Trust.</span>
+            <span className="font-italic-serif text-copper">
+              Building Trust.
+            </span>
           </FloatTitle>
         </Reveal>
       </div>
       <div className="lg:col-span-6 lg:col-start-7 space-y-6 text-ink-soft text-base lg:text-[17px] leading-relaxed">
-        <Reveal><p>Since 1984, Aasta Lifespace has been creating homes and spaces that reflect the people who live in them.</p></Reveal>
-        <Reveal delay={120}><p>What began as a passion for quality construction has evolved into a multidisciplinary practice offering Architecture, Construction, Interiors, and Turnkey Project Execution.</p></Reveal>
-        <Reveal delay={240}><p>Over the last four decades, we have helped families build homes, businesses create workspaces, and investors develop projects that stand the test of time.</p></Reveal>
+        <Reveal>
+          <p>
+            Since 1984, Aasta Lifespace has been creating homes and spaces that
+            reflect the people who live in them.
+          </p>
+        </Reveal>
+        <Reveal delay={120}>
+          <p>
+            What began as a passion for quality construction has evolved into a
+            multidisciplinary practice offering Architecture, Construction,
+            Interiors, and Turnkey Project Execution.
+          </p>
+        </Reveal>
+        <Reveal delay={240}>
+          <p>
+            Over the last four decades, we have helped families build homes,
+            businesses create workspaces, and investors develop projects that
+            stand the test of time.
+          </p>
+        </Reveal>
         <Reveal delay={360}>
-          <p>While materials, technologies, and design trends have changed, our commitment remains the same: <span className="text-ink">to build every project with integrity, attention to detail, and complete accountability.</span></p>
+          <p>
+            While materials, technologies, and design trends have changed, our
+            commitment remains the same:{" "}
+            <span className="text-ink">
+              to build every project with integrity, attention to detail, and
+              complete accountability.
+            </span>
+          </p>
+        </Reveal>
+        <Reveal delay={360}>
+          <h1 class="new_text">
+            Leading Construction Company in Bangalore for Homes, Villas &
+            Commercial Projects
+          </h1>
         </Reveal>
       </div>
     </div>
@@ -127,12 +205,22 @@ const About = () => (
     <div className="mt-24 grid gap-6 lg:grid-cols-12">
       <Reveal className="lg:col-span-5 lg:col-start-2">
         <div className="overflow-hidden">
-          <img src={about1} alt="Architectural detail" loading="lazy" className="aspect-[3/4] w-full object-cover transition-transform duration-[1200ms] hover:scale-105" />
+          <img
+            src={about1}
+            alt="Architectural detail"
+            loading="lazy"
+            className="aspect-[3/4] w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+          />
         </div>
       </Reveal>
       <Reveal delay={200} className="lg:col-span-6 lg:mt-32">
         <div className="overflow-hidden">
-          <img src={about2} alt="Craftsman at work" loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-[1200ms] hover:scale-105" />
+          <img
+            src={about2}
+            alt="Craftsman at work"
+            loading="lazy"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+          />
         </div>
       </Reveal>
     </div>
@@ -140,9 +228,18 @@ const About = () => (
 );
 
 const Vision = () => (
-  <section id="vision" className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44">
+  <section
+    id="vision"
+    className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44"
+  >
     <div className="mx-auto max-w-3xl text-center">
-      <Reveal><div className="inline-flex items-center gap-3 text-[10px] tracking-label uppercase text-copper"><span className="h-px w-6 bg-copper" />02 · Our Vision<span className="h-px w-6 bg-copper" /></div></Reveal>
+      <Reveal>
+        <div className="inline-flex items-center gap-3 text-[10px] tracking-label uppercase text-copper">
+          <span className="h-px w-6 bg-copper" />
+          02 · Our Vision
+          <span className="h-px w-6 bg-copper" />
+        </div>
+      </Reveal>
       <Reveal delay={120}>
         <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
           Creating Spaces That
@@ -152,7 +249,10 @@ const Vision = () => (
       </Reveal>
       <Reveal delay={240}>
         <p className="mt-10 text-ink-soft text-lg leading-relaxed">
-          We believe every space should be more than a structure. It should inspire, support, and evolve with the people who use it. Our goal is to create homes and environments that balance design, functionality, sustainability, and long-term value.
+          We believe every space should be more than a structure. It should
+          inspire, support, and evolve with the people who use it. Our goal is
+          to create homes and environments that balance design, functionality,
+          sustainability, and long-term value.
         </p>
       </Reveal>
     </div>
@@ -164,13 +264,25 @@ const SERVICES = [
     n: "01",
     title: "Architecture & Design",
     body: "Thoughtfully planned spaces designed around your lifestyle, site conditions, natural light, ventilation, and future needs.",
-    items: ["Architectural Design", "Space Planning", "3D Visualization", "Structural Planning", "Authority Approvals"],
+    items: [
+      "Architectural Design",
+      "Space Planning",
+      "3D Visualization",
+      "Structural Planning",
+      "Authority Approvals",
+    ],
   },
   {
     n: "02",
     title: "Construction",
     body: "Built with engineering precision, quality materials, and experienced supervision from foundation to handover.",
-    items: ["Residential Construction", "Villas & Farmhouses", "Commercial Buildings", "Structural Engineering", "Quality Control"],
+    items: [
+      "Residential Construction",
+      "Villas & Farmhouses",
+      "Commercial Buildings",
+      "Structural Engineering",
+      "Quality Control",
+    ],
   },
   {
     n: "03",
@@ -182,7 +294,14 @@ const SERVICES = [
     n: "04",
     title: "Turnkey Interiors",
     body: "Complete interior solutions delivered ready to move in.",
-    items: ["Modular Kitchens", "Custom Furniture", "Wardrobes", "Lighting Design", "False Ceilings", "Soft Furnishings"],
+    items: [
+      "Modular Kitchens",
+      "Custom Furniture",
+      "Wardrobes",
+      "Lighting Design",
+      "False Ceilings",
+      "Soft Furnishings",
+    ],
   },
 ];
 
@@ -190,12 +309,16 @@ const Services = () => (
   <section id="services" className="relative px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><SectionLabel index="03">Our Services</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="03">Our Services</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Everything your project needs.
             <br />
-            <span className="font-italic-serif text-copper">Under one roof.</span>
+            <span className="font-italic-serif text-copper">
+              Under one roof.
+            </span>
           </FloatTitle>
         </Reveal>
       </div>
@@ -204,7 +327,9 @@ const Services = () => (
         {SERVICES.map((s, i) => (
           <Reveal key={s.n} delay={i * 120}>
             <div className="group grid grid-cols-12 gap-6 py-10 transition-colors">
-              <span className="col-span-2 font-display text-2xl text-copper">{s.n}</span>
+              <span className="col-span-2 font-display text-2xl text-copper">
+                {s.n}
+              </span>
               <div className="col-span-10">
                 <h3 className="font-display text-3xl lg:text-4xl text-ink transition-transform duration-500 group-hover:translate-x-2">
                   {s.title}
@@ -213,7 +338,10 @@ const Services = () => (
                 {s.items.length > 0 && (
                   <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                     {s.items.map((it) => (
-                      <li key={it} className="flex items-start gap-2 text-sm text-ink-soft">
+                      <li
+                        key={it}
+                        className="flex items-start gap-2 text-sm text-ink-soft"
+                      >
                         <span className="mt-2 h-px w-3 shrink-0 bg-copper" />
                         <span>{it}</span>
                       </li>
@@ -231,24 +359,55 @@ const Services = () => (
 );
 
 const WHY = [
-  { n: "01", title: "40+ Years of Experience", body: "A legacy built on trust, quality, and long-standing client relationships." },
-  { n: "02", title: "End-to-End Execution", body: "Architecture, construction, interiors, and project management under one team." },
-  { n: "03", title: "Transparent Process", body: "Clear timelines, detailed budgets, and regular progress updates." },
-  { n: "04", title: "Quality First Approach", body: "We focus on craftsmanship, materials, and details that create lasting value." },
-  { n: "05", title: "Personalized Design", body: "Every project is tailored to the people who will live and work within it." },
-  { n: "06", title: "On-Time Delivery", body: "Structured planning and disciplined execution ensure projects stay on track." },
+  {
+    n: "01",
+    title: "40+ Years of Experience",
+    body: "A legacy built on trust, quality, and long-standing client relationships.",
+  },
+  {
+    n: "02",
+    title: "End-to-End Execution",
+    body: "Architecture, construction, interiors, and project management under one team.",
+  },
+  {
+    n: "03",
+    title: "Transparent Process",
+    body: "Clear timelines, detailed budgets, and regular progress updates.",
+  },
+  {
+    n: "04",
+    title: "Quality First Approach",
+    body: "We focus on craftsmanship, materials, and details that create lasting value.",
+  },
+  {
+    n: "05",
+    title: "Personalized Design",
+    body: "Every project is tailored to the people who will live and work within it.",
+  },
+  {
+    n: "06",
+    title: "On-Time Delivery",
+    body: "Structured planning and disciplined execution ensure projects stay on track.",
+  },
 ];
 
 const WhyChoose = () => (
-  <section id="why" className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44">
+  <section
+    id="why"
+    className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44"
+  >
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-6">
-        <Reveal><SectionLabel index="04">Why Choose Aasta</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="04">Why Choose Aasta</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Why families choose
             <br />
-            <span className="font-italic-serif text-copper">Aasta Lifespace.</span>
+            <span className="font-italic-serif text-copper">
+              Aasta Lifespace.
+            </span>
           </FloatTitle>
         </Reveal>
       </div>
@@ -271,7 +430,9 @@ const Projects = () => (
   <section id="projects" className="relative px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><SectionLabel index="05">Projects</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="05">Projects</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Real spaces.
@@ -281,8 +442,19 @@ const Projects = () => (
         </Reveal>
       </div>
       <div className="lg:col-span-6 lg:col-start-7 self-end space-y-5 text-ink-soft text-base lg:text-lg leading-relaxed">
-        <Reveal delay={200}><p>Every project we undertake reflects a unique vision, site, and family. Our portfolio spans residences, luxury villas, commercial spaces, renovations, and turnkey developments across India.</p></Reveal>
-        <Reveal delay={320}><p>Each one built with the same commitment to quality, functionality, and enduring design.</p></Reveal>
+        <Reveal delay={200}>
+          <p>
+            Every project we undertake reflects a unique vision, site, and
+            family. Our portfolio spans residences, luxury villas, commercial
+            spaces, renovations, and turnkey developments across India.
+          </p>
+        </Reveal>
+        <Reveal delay={320}>
+          <p>
+            Each one built with the same commitment to quality, functionality,
+            and enduring design.
+          </p>
+        </Reveal>
       </div>
     </div>
 
@@ -298,14 +470,20 @@ const STATS = [
 ];
 
 const Stats = () => (
-  <section id="stats" className="relative bg-ink text-ivory px-6 py-24 lg:px-20 lg:py-32">
-
+  <section
+    id="stats"
+    className="relative bg-ink text-ivory px-6 py-24 lg:px-20 lg:py-32"
+  >
     <div className="grid grid-cols-2 gap-y-12 gap-x-8 lg:grid-cols-4">
       {STATS.map((s, i) => (
         <Reveal key={s.label} delay={i * 120}>
           <div>
-            <p className="font-display text-5xl lg:text-7xl text-copper-soft">{s.value}</p>
-            <p className="mt-3 text-[10px] tracking-label uppercase text-ivory/60">{s.label}</p>
+            <p className="font-display text-5xl lg:text-7xl text-copper-soft">
+              {s.value}
+            </p>
+            <p className="mt-3 text-[10px] tracking-label uppercase text-ivory/60">
+              {s.label}
+            </p>
           </div>
         </Reveal>
       ))}
@@ -314,24 +492,58 @@ const Stats = () => (
 );
 
 const STEPS = [
-  { n: "01", title: "Discovery", body: "Understanding your vision, lifestyle, budget, and site." },
-  { n: "02", title: "Design", body: "Creating architectural concepts, layouts, and detailed plans." },
-  { n: "03", title: "Planning", body: "Finalizing materials, budgets, timelines, and approvals." },
-  { n: "04", title: "Construction", body: "Executing with expert supervision and quality control." },
-  { n: "05", title: "Interior Completion", body: "Bringing spaces to life through finishes and custom details." },
-  { n: "06", title: "Handover", body: "A complete, ready-to-use space delivered with confidence." },
+  {
+    n: "01",
+    title: "Discovery",
+    body: "Understanding your vision, lifestyle, budget, and site.",
+  },
+  {
+    n: "02",
+    title: "Design",
+    body: "Creating architectural concepts, layouts, and detailed plans.",
+  },
+  {
+    n: "03",
+    title: "Planning",
+    body: "Finalizing materials, budgets, timelines, and approvals.",
+  },
+  {
+    n: "04",
+    title: "Construction",
+    body: "Executing with expert supervision and quality control.",
+  },
+  {
+    n: "05",
+    title: "Interior Completion",
+    body: "Bringing spaces to life through finishes and custom details.",
+  },
+  {
+    n: "06",
+    title: "Handover",
+    body: "A complete, ready-to-use space delivered with confidence.",
+  },
 ];
 
 const Approach = () => (
-  <section id="approach" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
+  <section
+    id="approach"
+    className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44"
+  >
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />06 · Process</div></Reveal>
+        <Reveal>
+          <div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft">
+            <span className="h-px w-6 bg-copper-soft" />
+            06 · Process
+          </div>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05]">
             Your journey
             <br />
-            <span className="font-italic-serif text-copper-soft">with Aasta.</span>
+            <span className="font-italic-serif text-copper-soft">
+              with Aasta.
+            </span>
           </FloatTitle>
         </Reveal>
       </div>
@@ -339,14 +551,26 @@ const Approach = () => (
 
     <div className="mt-20 grid gap-x-12 gap-y-16 lg:grid-cols-2">
       {STEPS.map((s, i) => (
-        <Reveal key={s.n} delay={(i % 2) * 150} className={i % 2 === 1 ? "lg:mt-24" : ""}>
+        <Reveal
+          key={s.n}
+          delay={(i % 2) * 150}
+          className={i % 2 === 1 ? "lg:mt-24" : ""}
+        >
           <div className="border-t border-ivory/15 pt-8">
             <div className="flex items-baseline justify-between">
-              <span className="text-[10px] tracking-label uppercase text-ivory/50">Step {s.n}</span>
-              <span className="font-display text-7xl lg:text-8xl text-copper-soft/40">{s.n}</span>
+              <span className="text-[10px] tracking-label uppercase text-ivory/50">
+                Step {s.n}
+              </span>
+              <span className="font-display text-7xl lg:text-8xl text-copper-soft/40">
+                {s.n}
+              </span>
             </div>
-            <h3 className="mt-4 font-display text-3xl lg:text-4xl">{s.title}</h3>
-            <p className="mt-4 max-w-md text-ivory/70 leading-relaxed">{s.body}</p>
+            <h3 className="mt-4 font-display text-3xl lg:text-4xl">
+              {s.title}
+            </h3>
+            <p className="mt-4 max-w-md text-ivory/70 leading-relaxed">
+              {s.body}
+            </p>
           </div>
         </Reveal>
       ))}
@@ -359,11 +583,18 @@ const Founder = () => (
     <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
       <Reveal className="lg:col-span-5">
         <div className="overflow-hidden">
-          <img src={about2} alt="Founder of Aasta Lifespace" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+          <img
+            src={about2}
+            alt="Founder of Aasta Lifespace"
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover"
+          />
         </div>
       </Reveal>
       <div className="lg:col-span-6 lg:col-start-7 self-center">
-        <Reveal><SectionLabel index="07">Founder's Message</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="07">Founder's Message</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-5xl leading-[1.05] text-ink">
             A journey that began
@@ -373,13 +604,26 @@ const Founder = () => (
         </Reveal>
         <Reveal delay={240}>
           <div className="mt-8 space-y-5 text-ink-soft text-base lg:text-[17px] leading-relaxed">
-            <p>When we began Aasta Lifespace in 1984, our intent was simple: to build the kind of homes we would be proud to live in ourselves.</p>
-            <p>Four decades on, that intent has not changed. Every wall raised, every detail chosen, every handover delivered carries the same care we placed in our very first project.</p>
-            <p>We are grateful to the families and businesses who have trusted us across generations, and equally excited about the spaces still to come.</p>
+            <p>
+              When we began Aasta Lifespace in 1984, our intent was simple: to
+              build the kind of homes we would be proud to live in ourselves.
+            </p>
+            <p>
+              Four decades on, that intent has not changed. Every wall raised,
+              every detail chosen, every handover delivered carries the same
+              care we placed in our very first project.
+            </p>
+            <p>
+              We are grateful to the families and businesses who have trusted us
+              across generations, and equally excited about the spaces still to
+              come.
+            </p>
           </div>
         </Reveal>
         <Reveal delay={360}>
-          <p className="mt-8 font-italic-serif text-2xl text-copper">– The Founder, Aasta Lifespace</p>
+          <p className="mt-8 font-italic-serif text-2xl text-copper">
+            – The Founder, Aasta Lifespace
+          </p>
         </Reveal>
       </div>
     </div>
@@ -394,7 +638,13 @@ const TIERS = [
     price: "₹1,850",
     unit: "per sq. ft.",
     body: "A refined turnkey foundation for those seeking quiet quality without compromise.",
-    features: ["Structural design & construction", "Standard premium finishes", "Project management", "12-month warranty", "Quarterly progress reviews"],
+    features: [
+      "Structural design & construction",
+      "Standard premium finishes",
+      "Project management",
+      "12-month warranty",
+      "Quarterly progress reviews",
+    ],
     featured: false,
   },
   {
@@ -404,7 +654,13 @@ const TIERS = [
     price: "₹2,650",
     unit: "per sq. ft.",
     body: "Our most sought-after offering: architecture, interiors, and execution moving in concert.",
-    features: ["Bespoke architectural design", "Curated material palette", "Imported fixtures & joinery", "Dedicated project lead", "24-month warranty"],
+    features: [
+      "Bespoke architectural design",
+      "Curated material palette",
+      "Imported fixtures & joinery",
+      "Dedicated project lead",
+      "24-month warranty",
+    ],
     featured: true,
   },
   {
@@ -414,7 +670,14 @@ const TIERS = [
     price: "On request",
     unit: "Tailored engagement",
     body: "A fully bespoke commission for landmark residences and considered estates.",
-    features: ["End-to-end design authorship", "Rare materials & custom millwork", "Smart-home & lighting integration", "Landscape & exterior design", "Lifetime structural assurance", "Concierge handover & aftercare"],
+    features: [
+      "End-to-end design authorship",
+      "Rare materials & custom millwork",
+      "Smart-home & lighting integration",
+      "Landscape & exterior design",
+      "Lifetime structural assurance",
+      "Concierge handover & aftercare",
+    ],
     featured: false,
   },
 ];
@@ -427,7 +690,10 @@ const Pricing = () => {
     const el = document.getElementById("estimator");
     if (el) {
       const offset = window.innerWidth >= 1024 ? 24 : 88;
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - offset,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -435,7 +701,9 @@ const Pricing = () => {
     <section id="pricing" className="relative px-6 py-32 lg:px-20 lg:py-44">
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <Reveal><SectionLabel index="08">Engagements</SectionLabel></Reveal>
+          <Reveal>
+            <SectionLabel index="08">Engagements</SectionLabel>
+          </Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
               Three ways
@@ -446,7 +714,9 @@ const Pricing = () => {
         </div>
         <div className="lg:col-span-5 lg:col-start-8 self-end">
           <Reveal delay={200}>
-            <p className="text-ink-soft leading-relaxed text-lg">Structured, but never rigid.</p>
+            <p className="text-ink-soft leading-relaxed text-lg">
+              Structured, but never rigid.
+            </p>
           </Reveal>
         </div>
       </div>
@@ -454,22 +724,43 @@ const Pricing = () => {
       <div className="mt-20 grid gap-6 lg:grid-cols-3">
         {TIERS.map((t, i) => (
           <Reveal key={t.name} delay={i * 150}>
-            <div className={`relative h-full flex flex-col p-8 lg:p-10 transition-all duration-500 ${t.featured ? "bg-ink text-ivory shadow-[var(--shadow-soft)]" : "bg-ivory-deep text-ink hover:-translate-y-1"}`}>
+            <div
+              className={`relative h-full flex flex-col p-8 lg:p-10 transition-all duration-500 ${t.featured ? "bg-ink text-ivory shadow-[var(--shadow-soft)]" : "bg-ivory-deep text-ink hover:-translate-y-1"}`}
+            >
               {t.featured && (
-                <span className="absolute -top-3 left-8 bg-copper text-ivory text-[10px] tracking-label uppercase px-3 py-1.5">Most chosen</span>
+                <span className="absolute -top-3 left-8 bg-copper text-ivory text-[10px] tracking-label uppercase px-3 py-1.5">
+                  Most chosen
+                </span>
               )}
-              <p className={`text-[10px] tracking-label uppercase ${t.featured ? "text-copper-soft" : "text-copper"}`}>{t.tag}</p>
+              <p
+                className={`text-[10px] tracking-label uppercase ${t.featured ? "text-copper-soft" : "text-copper"}`}
+              >
+                {t.tag}
+              </p>
               <h3 className="mt-4 font-display text-4xl">{t.name}</h3>
               <div className="mt-8">
                 <p className="font-display text-5xl lg:text-6xl">{t.price}</p>
-                <p className={`mt-2 text-sm ${t.featured ? "text-ivory/60" : "text-ink-soft"}`}>{t.unit}</p>
+                <p
+                  className={`mt-2 text-sm ${t.featured ? "text-ivory/60" : "text-ink-soft"}`}
+                >
+                  {t.unit}
+                </p>
               </div>
-              <p className={`mt-6 text-sm leading-relaxed ${t.featured ? "text-ivory/75" : "text-ink-soft"}`}>{t.body}</p>
+              <p
+                className={`mt-6 text-sm leading-relaxed ${t.featured ? "text-ivory/75" : "text-ink-soft"}`}
+              >
+                {t.body}
+              </p>
               <ul className="mt-8 space-y-3 flex-1">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
-                    <Check size={14} className={`mt-1 shrink-0 ${t.featured ? "text-copper-soft" : "text-copper"}`} />
-                    <span className={t.featured ? "text-ivory/85" : "text-ink"}>{f}</span>
+                    <Check
+                      size={14}
+                      className={`mt-1 shrink-0 ${t.featured ? "text-copper-soft" : "text-copper"}`}
+                    />
+                    <span className={t.featured ? "text-ivory/85" : "text-ink"}>
+                      {f}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -490,32 +781,60 @@ const Pricing = () => {
 };
 
 const PILLARS = [
-  { title: "Natural Light & Ventilation", body: "Creating brighter, healthier spaces that remain comfortable throughout the year." },
-  { title: "Timeless Design", body: "Designing homes that remain relevant and beautiful for decades." },
-  { title: "Built To Last", body: "Using proven construction practices and durable materials that stand the test of time." },
+  {
+    title: "Natural Light & Ventilation",
+    body: "Creating brighter, healthier spaces that remain comfortable throughout the year.",
+  },
+  {
+    title: "Timeless Design",
+    body: "Designing homes that remain relevant and beautiful for decades.",
+  },
+  {
+    title: "Built To Last",
+    body: "Using proven construction practices and durable materials that stand the test of time.",
+  },
 ];
 
 const Philosophy = () => (
-  <section id="philosophy" className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44">
+  <section
+    id="philosophy"
+    className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44"
+  >
     <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
       <Reveal className="lg:col-span-5 order-2 lg:order-1">
         <div className="overflow-hidden">
-          <img src={philosophyImg} alt="Soft natural light" loading="lazy" className="aspect-[3/4] w-full object-cover" />
+          <img
+            src={philosophyImg}
+            alt="Soft natural light"
+            loading="lazy"
+            className="aspect-[3/4] w-full object-cover"
+          />
         </div>
       </Reveal>
       <div className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
-        <Reveal><SectionLabel index="09">Philosophy</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="09">Philosophy</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Spaces carefully
             <br />
-            <span className="font-italic-serif text-copper">brought to life.</span>
+            <span className="font-italic-serif text-copper">
+              brought to life.
+            </span>
           </FloatTitle>
         </Reveal>
         <Reveal delay={240}>
           <div className="mt-8 space-y-5 text-ink-soft text-base lg:text-lg leading-relaxed max-w-xl">
-            <p>At Aasta Lifespace, we believe exceptional buildings are created long before construction begins.</p>
-            <p>Every successful project starts with thoughtful planning, careful material selection, intelligent design decisions, and meticulous execution.</p>
+            <p>
+              At Aasta Lifespace, we believe exceptional buildings are created
+              long before construction begins.
+            </p>
+            <p>
+              Every successful project starts with thoughtful planning, careful
+              material selection, intelligent design decisions, and meticulous
+              execution.
+            </p>
           </div>
         </Reveal>
         <div className="mt-12 space-y-8">
@@ -523,7 +842,9 @@ const Philosophy = () => (
             <Reveal key={p.title} delay={i * 120}>
               <div className="border-t border-ink/15 pt-6">
                 <h4 className="font-display text-2xl text-ink">{p.title}</h4>
-                <p className="mt-2 text-ink-soft leading-relaxed max-w-md">{p.body}</p>
+                <p className="mt-2 text-ink-soft leading-relaxed max-w-md">
+                  {p.body}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -534,21 +855,40 @@ const Philosophy = () => (
 );
 
 const TESTIMONIALS = [
-  { quote: "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.", name: "Mr. Prasanna", role: "Lotus Arena, Doddaballapur" },
-  { quote: "We had a very clear idea of how we wanted our farmhouse to feel, and Aasta Lifespace brought that vision to life beautifully. They understood what mattered to us and never made us feel like just another project.", name: "Mrs. Anuradha K", role: "Farmhouse, Bidadi" },
-  { quote: "I wanted a builder who would be transparent and keep their word, and that's exactly what I experienced with Aasta Lifespace. The team was professional, approachable, and always ready to help.", name: "Mr. Srinivas Murthy", role: "Residence, Indira Nagar" },
+  {
+    quote:
+      "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.",
+    name: "Mr. Prasanna",
+    role: "Lotus Arena, Doddaballapur",
+  },
+  {
+    quote:
+      "We had a very clear idea of how we wanted our farmhouse to feel, and Aasta Lifespace brought that vision to life beautifully. They understood what mattered to us and never made us feel like just another project.",
+    name: "Mrs. Anuradha K",
+    role: "Farmhouse, Bidadi",
+  },
+  {
+    quote:
+      "I wanted a builder who would be transparent and keep their word, and that's exactly what I experienced with Aasta Lifespace. The team was professional, approachable, and always ready to help.",
+    name: "Mr. Srinivas Murthy",
+    role: "Residence, Indira Nagar",
+  },
 ];
 
 const Testimonials = () => (
   <section id="testimonials" className="relative px-6 py-32 lg:px-20 lg:py-44">
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-6">
-        <Reveal><SectionLabel index="10">Testimonials</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="10">Testimonials</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             In the words
             <br />
-            <span className="font-italic-serif text-copper">of our clients.</span>
+            <span className="font-italic-serif text-copper">
+              of our clients.
+            </span>
           </FloatTitle>
         </Reveal>
       </div>
@@ -563,7 +903,9 @@ const Testimonials = () => (
             </blockquote>
             <figcaption className="mt-8 border-t border-ink/15 pt-5">
               <p className="font-display text-lg text-ink">{t.name}</p>
-              <p className="text-[10px] tracking-label uppercase text-copper mt-1">{t.role}</p>
+              <p className="text-[10px] tracking-label uppercase text-copper mt-1">
+                {t.role}
+              </p>
             </figcaption>
           </figure>
         </Reveal>
@@ -596,10 +938,15 @@ const FAQ_ITEMS = [
 ];
 
 const FAQs = () => (
-  <section id="faqs" className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44">
+  <section
+    id="faqs"
+    className="relative bg-ivory-deep px-6 py-32 lg:px-20 lg:py-44"
+  >
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <Reveal><SectionLabel index="11">FAQs</SectionLabel></Reveal>
+        <Reveal>
+          <SectionLabel index="11">FAQs</SectionLabel>
+        </Reveal>
         <Reveal delay={120}>
           <FloatTitle className="mt-8 font-display text-4xl lg:text-6xl leading-[1.05] text-ink">
             Questions,
@@ -611,7 +958,11 @@ const FAQs = () => (
       <div className="lg:col-span-6 lg:col-start-7">
         <Accordion type="single" collapsible className="w-full">
           {FAQ_ITEMS.map((f, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border-b border-ink/15">
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="border-b border-ink/15"
+            >
               <AccordionTrigger className="text-left font-display text-xl lg:text-2xl text-ink hover:text-copper hover:no-underline py-6">
                 {f.q}
               </AccordionTrigger>
@@ -629,24 +980,34 @@ const FAQs = () => (
 const Careers = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Application received", description: "Thank you for your interest. Our team will review and reach out." });
+    toast({
+      title: "Application received",
+      description:
+        "Thank you for your interest. Our team will review and reach out.",
+    });
     (e.target as HTMLFormElement).reset();
   };
   return (
     <section id="careers" className="relative px-6 py-32 lg:px-20 lg:py-44">
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <Reveal><SectionLabel index="12">Careers</SectionLabel></Reveal>
+          <Reveal>
+            <SectionLabel index="12">Careers</SectionLabel>
+          </Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-5xl lg:text-6xl leading-[1.02] text-ink">
               Build with
               <br />
-              <span className="font-italic-serif text-copper">a legacy studio.</span>
+              <span className="font-italic-serif text-copper">
+                a legacy studio.
+              </span>
             </FloatTitle>
           </Reveal>
           <Reveal delay={240}>
             <p className="mt-8 text-ink-soft text-lg leading-relaxed max-w-md">
-              We're always looking for architects, engineers, project managers, site supervisors, and craft specialists who care about the details. Share your story below.
+              We're always looking for architects, engineers, project managers,
+              site supervisors, and craft specialists who care about the
+              details. Share your story below.
             </p>
           </Reveal>
         </div>
@@ -654,15 +1015,53 @@ const Careers = () => {
         <Reveal delay={300} className="lg:col-span-7">
           <form onSubmit={onSubmit} className="grid gap-6 sm:grid-cols-2">
             {[
-              { name: "name", label: "Full name", type: "text", full: false, required: true },
-              { name: "email", label: "Email", type: "email", full: false, required: true },
-              { name: "phone", label: "Phone", type: "tel", full: false, required: true },
-              { name: "role", label: "Role of interest", type: "text", full: false, required: true },
-              { name: "experience", label: "Years of experience", type: "text", full: false, required: false },
-              { name: "location", label: "Current location", type: "text", full: false, required: false },
+              {
+                name: "name",
+                label: "Full name",
+                type: "text",
+                full: false,
+                required: true,
+              },
+              {
+                name: "email",
+                label: "Email",
+                type: "email",
+                full: false,
+                required: true,
+              },
+              {
+                name: "phone",
+                label: "Phone",
+                type: "tel",
+                full: false,
+                required: true,
+              },
+              {
+                name: "role",
+                label: "Role of interest",
+                type: "text",
+                full: false,
+                required: true,
+              },
+              {
+                name: "experience",
+                label: "Years of experience",
+                type: "text",
+                full: false,
+                required: false,
+              },
+              {
+                name: "location",
+                label: "Current location",
+                type: "text",
+                full: false,
+                required: false,
+              },
             ].map((f) => (
               <div key={f.name} className={f.full ? "sm:col-span-2" : ""}>
-                <label className="text-[10px] tracking-label uppercase text-ink-soft">{f.label}</label>
+                <label className="text-[10px] tracking-label uppercase text-ink-soft">
+                  {f.label}
+                </label>
                 <input
                   required={f.required}
                   type={f.type}
@@ -672,7 +1071,9 @@ const Careers = () => {
               </div>
             ))}
             <div className="sm:col-span-2">
-              <label className="text-[10px] tracking-label uppercase text-ink-soft">Cover note</label>
+              <label className="text-[10px] tracking-label uppercase text-ink-soft">
+                Cover note
+              </label>
               <textarea
                 name="cover"
                 rows={4}
@@ -697,7 +1098,10 @@ const Careers = () => {
                 className="group inline-flex items-center gap-3 bg-ink text-ivory px-8 py-4 text-[10px] tracking-label uppercase transition-all hover:bg-copper"
               >
                 Submit application
-                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
               </button>
             </div>
           </form>
@@ -716,50 +1120,88 @@ const WhatsAppFloat = () => (
     className="fixed bottom-6 right-6 z-50 group flex items-center gap-2 bg-[#25D366] text-white pl-4 pr-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
   >
     <MessageCircle size={20} className="fill-white" />
-    <span className="text-[11px] tracking-label uppercase font-medium hidden sm:inline">WhatsApp</span>
+    <span className="text-[11px] tracking-label uppercase font-medium hidden sm:inline">
+      WhatsApp
+    </span>
   </a>
 );
 
 const Contact = () => {
-
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Thank you", description: "We'll be in touch shortly to begin the conversation." });
+    toast({
+      title: "Thank you",
+      description: "We'll be in touch shortly to begin the conversation.",
+    });
     (e.target as HTMLFormElement).reset();
   };
 
   return (
-    <section id="contact" className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44">
+    <section
+      id="contact"
+      className="relative bg-ink text-ivory px-6 py-32 lg:px-20 lg:py-44"
+    >
       <div className="grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <Reveal><div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft"><span className="h-px w-6 bg-copper-soft" />13 · Contact</div></Reveal>
+          <Reveal>
+            <div className="flex items-center gap-3 text-[10px] tracking-label uppercase text-copper-soft">
+              <span className="h-px w-6 bg-copper-soft" />
+              13 · Contact
+            </div>
+          </Reveal>
           <Reveal delay={120}>
             <FloatTitle className="mt-8 font-display text-5xl lg:text-7xl leading-[1.02]">
               Let's build something
               <br />
-              <span className="font-italic-serif text-copper-soft">meaningful together.</span>
+              <span className="font-italic-serif text-copper-soft">
+                meaningful together.
+              </span>
             </FloatTitle>
           </Reveal>
           <Reveal delay={240}>
             <p className="mt-8 text-ivory/70 text-lg leading-relaxed max-w-lg">
-              Whether you're planning your dream home, a luxury villa, or a commercial development, our team is ready to guide you from concept to completion. Share your vision with us and let's explore how we can bring it to life.
+              Whether you're planning your dream home, a luxury villa, or a
+              commercial development, our team is ready to guide you from
+              concept to completion. Share your vision with us and let's explore
+              how we can bring it to life.
             </p>
           </Reveal>
-          <Reveal delay={360} className="mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm">
+          <Reveal
+            delay={360}
+            className="mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-2xl text-sm"
+          >
             <div className="min-w-0">
-              <p className="text-[10px] tracking-label uppercase text-ivory/50">Studio</p>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">
+                Studio
+              </p>
               <p className="mt-2 text-ivory/85">Bengaluru, India</p>
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] tracking-label uppercase text-ivory/50">Enquiries</p>
-              <a href="mailto:studio@aastalifespace.com" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors break-all">studio@aastalifespace.com</a>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">
+                Enquiries
+              </p>
+              <a
+                href="mailto:studio@aastalifespace.com"
+                className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors break-all"
+              >
+                studio@aastalifespace.com
+              </a>
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] tracking-label uppercase text-ivory/50">Call</p>
-              <a href="tel:+919148837834" className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors whitespace-nowrap">+91 91488 37834</a>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">
+                Call
+              </p>
+              <a
+                href="tel:+919148837834"
+                className="mt-2 block text-ivory/85 hover:text-copper-soft transition-colors whitespace-nowrap"
+              >
+                +91 91488 37834
+              </a>
             </div>
             <div>
-              <p className="text-[10px] tracking-label uppercase text-ivory/50">Follow</p>
+              <p className="text-[10px] tracking-label uppercase text-ivory/50">
+                Follow
+              </p>
               <div className="mt-2 flex items-center gap-3">
                 <a
                   href="https://www.facebook.com/profile.php?id=61591378105753"
@@ -768,7 +1210,11 @@ const Contact = () => {
                   aria-label="Aasta Lifespace on Facebook"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+                    window.open(
+                      "https://www.facebook.com/profile.php?id=61591378105753",
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
                   }}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
                 >
@@ -781,17 +1227,19 @@ const Contact = () => {
                   aria-label="Aasta Lifespace on Instagram"
                   onClick={(e) => {
                     e.preventDefault();
-                    window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+                    window.open(
+                      "https://www.instagram.com/aasta_lifespace/",
+                      "_blank",
+                      "noopener,noreferrer",
+                    );
                   }}
                   className="grid h-9 w-9 place-items-center rounded-full border border-ivory/25 text-ivory/85 hover:border-copper-soft hover:text-copper-soft transition-colors"
                 >
                   <Instagram size={15} />
                 </a>
               </div>
-
             </div>
           </Reveal>
-
         </div>
 
         <Reveal delay={300} className="lg:col-span-5">
@@ -802,7 +1250,9 @@ const Contact = () => {
               { name: "type", label: "Project type", type: "text" },
             ].map((f) => (
               <div key={f.name}>
-                <label className="text-[10px] tracking-label uppercase text-ivory/50">{f.label}</label>
+                <label className="text-[10px] tracking-label uppercase text-ivory/50">
+                  {f.label}
+                </label>
                 <input
                   required
                   type={f.type}
@@ -812,7 +1262,9 @@ const Contact = () => {
               </div>
             ))}
             <div>
-              <label className="text-[10px] tracking-label uppercase text-ivory/50">Message</label>
+              <label className="text-[10px] tracking-label uppercase text-ivory/50">
+                Message
+              </label>
               <textarea
                 required
                 name="message"
@@ -825,7 +1277,10 @@ const Contact = () => {
               className="group inline-flex items-center gap-3 border border-ivory/30 px-8 py-4 text-[10px] tracking-label uppercase transition-all hover:bg-copper hover:border-copper hover:text-ivory"
             >
               Start Your Project Today
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
             </button>
           </form>
         </Reveal>
@@ -845,7 +1300,11 @@ const Contact = () => {
             rel="noopener noreferrer"
             onClick={(e) => {
               e.preventDefault();
-              window.open("https://www.facebook.com/profile.php?id=61591378105753", "_blank", "noopener,noreferrer");
+              window.open(
+                "https://www.facebook.com/profile.php?id=61591378105753",
+                "_blank",
+                "noopener,noreferrer",
+              );
             }}
             className="transition-colors hover:text-ivory"
           >
@@ -857,7 +1316,11 @@ const Contact = () => {
             rel="noopener noreferrer"
             onClick={(e) => {
               e.preventDefault();
-              window.open("https://www.instagram.com/aasta_lifespace/", "_blank", "noopener,noreferrer");
+              window.open(
+                "https://www.instagram.com/aasta_lifespace/",
+                "_blank",
+                "noopener,noreferrer",
+              );
             }}
             className="transition-colors hover:text-ivory"
           >
@@ -878,7 +1341,9 @@ const Index = () => {
   const toggle = () => {
     setCollapsed((v) => {
       const next = !v;
-      try { window.localStorage.setItem("aasta:rail", next ? "1" : "0"); } catch {}
+      try {
+        window.localStorage.setItem("aasta:rail", next ? "1" : "0");
+      } catch {}
       return next;
     });
   };
@@ -886,7 +1351,7 @@ const Index = () => {
     <main
       className={cn(
         "bg-background text-foreground pt-16 lg:pt-0 transition-[padding] duration-500 ease-out",
-        collapsed ? "lg:pl-14" : "lg:pl-[260px]"
+        collapsed ? "lg:pl-14" : "lg:pl-[260px]",
       )}
     >
       <SideRail collapsed={collapsed} onToggle={toggle} />
@@ -907,7 +1372,6 @@ const Index = () => {
       <Contact />
       <WhatsAppFloat />
     </main>
-
   );
 };
 
