@@ -57,9 +57,25 @@ const scrollToId = (id: string) => {
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    // Parallax is desktop-only: it forces continuous repaints of a full-screen
+    // image, which is the single biggest scroll-jank source on phones.
+    const enabled =
+      window.innerWidth >= 1024 &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!enabled) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        setScrollY(window.scrollY);
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
@@ -70,9 +86,14 @@ const Hero = () => {
       <img
         src={hero}
         alt="Luxury villa by Aasta Lifespace at golden hour"
-        className="absolute inset-0 h-full w-full object-cover"
+        width={1400}
+        height={782}
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover will-change-transform"
         style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
       />
+
       {/* Legibility scrim: dark gradient bottom-left so headline text reads cleanly */}
       <div className="absolute inset-0 bg-gradient-to-tr from-ink/85 via-ink/55 to-ink/10" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
