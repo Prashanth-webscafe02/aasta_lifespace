@@ -214,12 +214,8 @@ const About = () => (
             </span>
           </p>
         </Reveal>
-        <Reveal delay={360}>
-          <h1 class="new_text">
-            Leading Construction Company in Bangalore for Homes, Villas &
-            Commercial Projects
-          </h1>
-        </Reveal>
+
+
       </div>
     </div>
 
