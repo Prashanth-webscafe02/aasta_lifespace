@@ -214,8 +214,13 @@ const About = () => (
             </span>
           </p>
         </Reveal>
-
-
+        <Reveal delay={480}>
+          <p className="new_text">
+            Today, Aasta Lifespace continues to blend timeless craftsmanship
+            with modern methods, delivering spaces that are not only beautiful
+            but also practical, sustainable, and deeply personal.
+          </p>
+        </Reveal>
       </div>
     </div>
 
