@@ -106,7 +106,9 @@ export const ProjectsCarousel = () => {
                   <img
                     src={s.src}
                     alt={s.alt}
-                    loading="lazy"
+                    loading={i < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 48vw, 32vw"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -122,7 +124,8 @@ export const ProjectsCarousel = () => {
           <CarouselNext className="hidden md:flex -right-2 lg:-right-6 h-12 w-12 border-ink/20 bg-ivory hover:bg-copper hover:text-ivory hover:border-copper" />
         </Carousel>
         <p className="mt-6 text-center text-[10px] tracking-label uppercase text-ink-soft/70">
-          Auto-playing. Hover to pause, click any image to enlarge.
+          <span className="md:hidden">Swipe to explore · tap any image to enlarge</span>
+          <span className="hidden md:inline">Auto-playing. Hover to pause, click any image to enlarge.</span>
         </p>
       </div>
 
