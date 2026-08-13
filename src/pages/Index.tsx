@@ -215,11 +215,10 @@ const About = () => (
           </p>
         </Reveal>
         <Reveal delay={480}>
-          <p className="new_text">
-            Today, Aasta Lifespace continues to blend timeless craftsmanship
-            with modern methods, delivering spaces that are not only beautiful
-            but also practical, sustainable, and deeply personal.
-          </p>
+          <h1 className="new_text mt-4 text-xl lg:text-2xl font-medium leading-snug text-ink">
+            Leading Construction Company in Bangalore for Homes, Villas &
+            Commercial Projects
+          </h1>
         </Reveal>
       </div>
     </div>
