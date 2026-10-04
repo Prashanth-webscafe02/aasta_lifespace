@@ -8,7 +8,7 @@ const ProjectCard = ({ project, onInquiry }: { project: Project; onInquiry: (pro
   <article className="group">
     <div className="relative aspect-[4/3] overflow-hidden bg-ink">
       <Link to={`/projects/${project.slug}`} aria-label={`View ${project.name}`}>
-        <img src={project.coverImage} alt={`${project.name} in ${project.location}`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
+        <img src={project.coverImage} alt={`${project.name} in ${project.location}`} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105" />
       </Link>
       {/* Permanent scrim so the title and buttons stay readable on any photo */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
