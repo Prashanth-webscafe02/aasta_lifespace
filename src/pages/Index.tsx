@@ -22,12 +22,22 @@ import {
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
-import hero from "@/assets/hero.jpg";
-import about1 from "@/assets/about-1.jpg";
 import about2 from "@/assets/about-2.jpg";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
-import philosophyImg from "@/assets/philosophy.jpg";
 import logo from "@/assets/aasta-logo.png";
+import { PROJECTS } from "@/data/projects";
+import arte02 from "@/assets/arte-02.jpg";
+import wilson03 from "@/assets/wilson-03.jpg";
+import kalyan01 from "@/assets/kalyan-01.jpg";
+import prestigeInt01 from "@/assets/prestige-int-01.jpg";
+import hero from "@/assets/prestige-ext-02.jpg";
+import philosophyImg from "@/assets/prestige-terrace-01.jpg";
+import wilson13 from "@/assets/wilson-13.jpg";
+import prestigeInt03 from "@/assets/prestige-int-03.jpg";
+import kalyan14 from "@/assets/kalyan-14.jpg";
+import { Link } from "react-router-dom";
+import { StartProjectBand } from "@/components/StartProjectBand";
+import { PROJECT_TYPES, sendLeadToWhatsApp } from "@/components/InquiryDialog";
 
 const SectionLabel = ({
   index,
@@ -69,7 +79,7 @@ const Hero = () => {
     >
       <img
         src={hero}
-        alt="Luxury villa by Aasta Lifespace at golden hour"
+        alt="Garden villa at Prestige Laughing Waters, built by Aasta Lifespace"
         className="absolute inset-0 h-full w-full object-cover"
         style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.1)` }}
       />
@@ -145,9 +155,15 @@ const Hero = () => {
   );
 };
 
+const ABOUT_IMAGES = [
+  { image: wilson13, label: "Architecture", caption: "Designed around the site", alt: "Balconies of ARTE Homes among palm trees", span: "lg:col-span-6" },
+  { image: prestigeInt03, label: "Interiors", caption: "Finished, ready to live in", alt: "Daylit living room of a villa by Aasta Lifespace", span: "lg:col-span-3" },
+  { image: kalyan14, label: "Construction", caption: "Built to last", alt: "Kalyan Nagar building lit at night", span: "lg:col-span-3" },
+];
+
 const About = () => (
-  <section id="about" className="relative px-6 py-32 lg:px-20 lg:py-44">
-    <div className="grid gap-16 lg:grid-cols-12">
+  <section id="about" className="relative px-6 py-20 lg:px-20 lg:py-28">
+    <div className="grid gap-10 lg:grid-cols-12">
       <div className="lg:col-span-5">
         <Reveal>
           <SectionLabel index="01">About Us</SectionLabel>
@@ -193,36 +209,22 @@ const About = () => (
             </span>
           </p>
         </Reveal>
-        <Reveal delay={360}>
-          <h1 class="new_text">
-            Leading Construction Company in Bangalore for Homes, Villas &
-            Commercial Projects
-          </h1>
-        </Reveal>
       </div>
     </div>
 
-    <div className="mt-24 grid gap-6 lg:grid-cols-12">
-      <Reveal className="lg:col-span-5 lg:col-start-2">
-        <div className="overflow-hidden">
-          <img
-            src={about1}
-            alt="Architectural detail"
-            loading="lazy"
-            className="aspect-[3/4] w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
-          />
-        </div>
-      </Reveal>
-      <Reveal delay={200} className="lg:col-span-6 lg:mt-32">
-        <div className="overflow-hidden">
-          <img
-            src={about2}
-            alt="Craftsman at work"
-            loading="lazy"
-            className="aspect-[4/3] w-full object-cover transition-transform duration-[1200ms] hover:scale-105"
-          />
-        </div>
-      </Reveal>
+    <div className="mt-14 grid gap-4 lg:grid-cols-12">
+      {ABOUT_IMAGES.map((item, i) => (
+        <Reveal key={item.label} delay={i * 120} className={item.span}>
+          <figure className="group relative h-full overflow-hidden">
+            <img src={item.image} alt={item.alt} loading="lazy" className="h-full min-h-[260px] w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 lg:min-h-[340px]" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-5 text-ivory">
+              <p className="text-[10px] tracking-label uppercase text-copper-soft">{item.label}</p>
+              <p className="mt-1 font-display text-xl">{item.caption}</p>
+            </figcaption>
+          </figure>
+        </Reveal>
+      ))}
     </div>
   </section>
 );
@@ -271,6 +273,7 @@ const SERVICES = [
       "Structural Planning",
       "Authority Approvals",
     ],
+    image: arte02,
   },
   {
     n: "02",
@@ -283,12 +286,14 @@ const SERVICES = [
       "Structural Engineering",
       "Quality Control",
     ],
+    image: wilson03,
   },
   {
     n: "03",
     title: "Design & Build",
     body: "A single team managing your project from concept to completion. No coordination hassles. No communication gaps. No compromise between design and execution.",
     items: [],
+    image: kalyan01,
   },
   {
     n: "04",
@@ -302,6 +307,7 @@ const SERVICES = [
       "False Ceilings",
       "Soft Furnishings",
     ],
+    image: prestigeInt01,
   },
 ];
 
@@ -327,10 +333,11 @@ const Services = () => (
         {SERVICES.map((s, i) => (
           <Reveal key={s.n} delay={i * 120}>
             <div className="group grid grid-cols-12 gap-6 py-10 transition-colors">
-              <span className="col-span-2 font-display text-2xl text-copper">
-                {s.n}
-              </span>
-              <div className="col-span-10">
+              <div className="col-span-12 overflow-hidden md:col-span-4">
+                <img src={s.image} alt={`${s.title} project work`} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="col-span-12 md:col-span-8">
+                <span className="font-display text-2xl text-copper">{s.n}</span>
                 <h3 className="font-display text-3xl lg:text-4xl text-ink transition-transform duration-500 group-hover:translate-x-2">
                   {s.title}
                 </h3>
@@ -391,6 +398,16 @@ const WHY = [
   },
 ];
 
+const DIFFERENCE = [
+  { topic: "Who you deal with", usual: "Separate architect, contractor and interior designer — you coordinate between them.", aasta: "One team and one point of contact from first sketch to handover." },
+  { topic: "Design vs. site", usual: "Drawings are handed over and interpreted on site, often with changes nobody planned for.", aasta: "The people who design it also build it, so the design intent carries through to the finished space." },
+  { topic: "Budget", usual: "Separate quotes that rarely add up to the real total; surprises arrive mid-way.", aasta: "An itemised estimate up front, with every change documented and agreed before work proceeds." },
+  { topic: "Accountability", usual: "When something goes wrong, each party points to another.", aasta: "One firm is responsible for the whole outcome — no blame-shifting." },
+  { topic: "Interiors", usual: "Planned after construction, leading to broken walls and re-routed wiring.", aasta: "Planned alongside construction, so electrical, plumbing and joinery fit first time." },
+  { topic: "Progress", usual: "You visit the site to find out what is happening.", aasta: "Regular updates with site photographs at every stage." },
+  { topic: "Experience", usual: "Varies from project to project.", aasta: "Four decades of building homes and spaces since 1984." },
+];
+
 const WhyChoose = () => (
   <section
     id="why"
@@ -422,6 +439,35 @@ const WhyChoose = () => (
           </div>
         </Reveal>
       ))}
+    </div>
+
+    <div className="mt-24">
+      <Reveal>
+        <h3 className="font-display text-3xl lg:text-5xl leading-tight text-ink">How Aasta is <span className="font-italic-serif text-copper">different.</span></h3>
+        <p className="mt-4 max-w-2xl text-ink-soft leading-relaxed">Most projects are split between an architect, a contractor and an interior designer — and the gaps between them are where budgets slip and timelines stretch. Here is what changes when one team owns it all.</p>
+      </Reveal>
+      <Reveal delay={120}>
+        <div className="mt-10 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="text-[10px] tracking-label uppercase">
+                <th className="w-1/4 border-b border-ink/20 py-4 pr-6 font-normal text-ink-soft"><span className="sr-only">Topic</span></th>
+                <th className="w-[37.5%] border-b border-ink/20 py-4 pr-6 font-normal text-ink-soft">The usual way</th>
+                <th className="w-[37.5%] border-b border-copper bg-ivory px-5 py-4 font-normal text-copper">With Aasta</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DIFFERENCE.map((row) => (
+                <tr key={row.topic}>
+                  <td className="border-b border-ink/10 py-5 pr-6 font-display text-lg text-ink">{row.topic}</td>
+                  <td className="border-b border-ink/10 py-5 pr-6 text-ink-soft leading-relaxed">{row.usual}</td>
+                  <td className="border-b border-ink/10 bg-ivory px-5 py-5 text-ink leading-relaxed"><Check size={14} className="mr-2 inline text-copper" />{row.aasta}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Reveal>
     </div>
   </section>
 );
@@ -458,7 +504,10 @@ const Projects = () => (
       </div>
     </div>
 
-    <ProjectsCarousel />
+    <ProjectsCarousel limit={3} />
+    <div className="mt-14 flex justify-center">
+      <Link to="/projects" className="group inline-flex items-center gap-3 border border-ink/30 px-7 py-4 text-[10px] tracking-label uppercase text-ink transition-colors hover:border-copper hover:bg-copper hover:text-ivory">View all projects <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
+    </div>
   </section>
 );
 
@@ -805,7 +854,7 @@ const Philosophy = () => (
         <div className="overflow-hidden">
           <img
             src={philosophyImg}
-            alt="Soft natural light"
+            alt="Planted rooftop walk at a villa by Aasta Lifespace"
             loading="lazy"
             className="aspect-[3/4] w-full object-cover"
           />
@@ -854,7 +903,8 @@ const Philosophy = () => (
   </section>
 );
 
-const TESTIMONIALS = [
+// Add a client photo with `image` (import from @/assets) — initials show until then.
+const TESTIMONIALS: { quote: string; name: string; role: string; image?: string }[] = [
   {
     quote:
       "We had a clear vision for Lotus Arena, and Aasta Lifespace understood it from the very beginning. They were easy to work with, communicated well throughout the project, and delivered a space we're proud to welcome our guests to.",
@@ -874,6 +924,26 @@ const TESTIMONIALS = [
     role: "Residence, Indira Nagar",
   },
 ];
+
+const InstagramGrid = () => (
+  <section className="mt-24 border-t border-ivory/15 pt-10">
+    <div className="flex items-end justify-between gap-6">
+      <div>
+        <p className="text-[10px] tracking-label uppercase text-copper-soft">@aasta_lifespace</p>
+        <h2 className="mt-3 font-display text-3xl text-ivory">Follow the work on Instagram.</h2>
+      </div>
+      <a href="https://www.instagram.com/aasta_lifespace/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] tracking-label uppercase text-ivory/70 transition-colors hover:text-copper-soft">Instagram <ArrowUpRight size={13} /></a>
+    </div>
+    <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
+      {PROJECTS.flatMap((project) => project.galleryImages.slice(2, 4)).slice(0, 8).map((image, index) => (
+        <a key={image} href="https://www.instagram.com/aasta_lifespace/" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram" className="group relative block overflow-hidden">
+          <img src={image} alt={`Aasta Lifespace project detail ${index + 1}`} loading="lazy" className="aspect-square w-full object-cover transition duration-700 group-hover:scale-105" />
+          <span className="absolute inset-0 grid place-items-center bg-ink/0 text-ivory opacity-0 transition duration-500 group-hover:bg-ink/50 group-hover:opacity-100"><Instagram size={26} /></span>
+        </a>
+      ))}
+    </div>
+  </section>
+);
 
 const Testimonials = () => (
   <section id="testimonials" className="relative px-6 py-32 lg:px-20 lg:py-44">
@@ -902,10 +972,21 @@ const Testimonials = () => (
               "{t.quote}"
             </blockquote>
             <figcaption className="mt-8 border-t border-ink/15 pt-5">
-              <p className="font-display text-lg text-ink">{t.name}</p>
-              <p className="text-[10px] tracking-label uppercase text-copper mt-1">
-                {t.role}
-              </p>
+              <div className="flex items-center gap-4">
+                {t.image ? (
+                  <img src={t.image} alt={t.name} loading="lazy" className="h-14 w-14 shrink-0 rounded-full object-cover" />
+                ) : (
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-copper font-display text-lg text-ivory">
+                    {t.name.replace(/^(Mr|Mrs|Ms|Dr)\.?\s+/, "").split(" ").map((part) => part[0]).slice(0, 2).join("")}
+                  </span>
+                )}
+                <div>
+                  <p className="font-display text-lg text-ink">{t.name}</p>
+                  <p className="text-[10px] tracking-label uppercase text-copper mt-1">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
             </figcaption>
           </figure>
         </Reveal>
@@ -1129,11 +1210,14 @@ const WhatsAppFloat = () => (
 const Contact = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    sendLeadToWhatsApp(data);
     toast({
       title: "Thank you",
-      description: "We'll be in touch shortly to begin the conversation.",
+      description: "Your enquiry is ready to send on WhatsApp. We'll be in touch shortly.",
     });
-    (e.target as HTMLFormElement).reset();
+    form.reset();
   };
 
   return (
@@ -1245,16 +1329,17 @@ const Contact = () => {
         <Reveal delay={300} className="lg:col-span-5">
           <form onSubmit={onSubmit} className="space-y-6">
             {[
-              { name: "name", label: "Name", type: "text" },
-              { name: "email", label: "Email", type: "email" },
-              { name: "type", label: "Project type", type: "text" },
+              { name: "name", label: "Name", type: "text", required: true },
+              { name: "phone", label: "Phone", type: "tel", required: true },
+              { name: "email", label: "Email", type: "email", required: false },
+              { name: "location", label: "Site location", type: "text", required: false },
             ].map((f) => (
               <div key={f.name}>
                 <label className="text-[10px] tracking-label uppercase text-ivory/50">
                   {f.label}
                 </label>
                 <input
-                  required
+                  required={f.required}
                   type={f.type}
                   name={f.name}
                   className="mt-2 w-full bg-transparent border-b border-ivory/20 py-3 text-ivory placeholder:text-ivory/30 focus:border-copper-soft focus:outline-none transition-colors"
@@ -1263,10 +1348,23 @@ const Contact = () => {
             ))}
             <div>
               <label className="text-[10px] tracking-label uppercase text-ivory/50">
+                Project type
+              </label>
+              <select
+                required
+                name="projectType"
+                defaultValue=""
+                className="mt-2 w-full bg-transparent border-b border-ivory/20 py-3 text-ivory focus:border-copper-soft focus:outline-none transition-colors [&>option]:text-ink"
+              >
+                <option value="" disabled>Select…</option>
+                {PROJECT_TYPES.map((type) => <option key={type}>{type}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="text-[10px] tracking-label uppercase text-ivory/50">
                 Message
               </label>
               <textarea
-                required
                 name="message"
                 rows={4}
                 className="mt-2 w-full bg-transparent border-b border-ivory/20 py-3 text-ivory placeholder:text-ivory/30 focus:border-copper-soft focus:outline-none transition-colors resize-none"
@@ -1285,6 +1383,8 @@ const Contact = () => {
           </form>
         </Reveal>
       </div>
+
+      <InstagramGrid />
 
       <footer className="mt-32 pt-10 border-t border-ivory/15 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <img
@@ -1359,14 +1459,17 @@ const Index = () => {
       <About />
       <Vision />
       <Services />
+      <StartProjectBand title="Have a site or a plan in mind?" accent="Let's talk about it." body="Tell us what you're planning — a home, a villa, a commercial building or complete interiors — and we'll walk you through the next steps." />
       <WhyChoose />
       <Projects />
+      <StartProjectBand dark eyebrow="Your project next" title="Like what you see?" accent="Start your own." />
       <Stats />
       <Approach />
       <Founder />
       <Pricing />
       <Philosophy />
       <Testimonials />
+      <StartProjectBand title="Ready to build with a team" accent="that's done it for 40 years?" />
       <FAQs />
       <Careers />
       <Contact />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/aasta-logo.png";
 import bird from "@/assets/aasta-bird.png";
 import { cn } from "@/lib/utils";
@@ -15,7 +16,11 @@ const NAV = [
   { id: "faqs", label: "FAQs" },
   { id: "careers", label: "Careers" },
   { id: "contact", label: "Contact" },
+];
 
+const PAGES = [
+  { to: "/projects", label: "All projects" },
+  { to: "/blog", label: "Blog" },
 ];
 
 type Props = {
@@ -119,6 +124,13 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
                 );
               })}
             </nav>
+            <div className="flex flex-col gap-3 border-t border-ink/10 pt-5">
+              {PAGES.map((page) => (
+                <Link key={page.to} to={page.to} className="inline-flex items-center gap-2 text-sm font-sans-ui text-ink-soft transition-colors hover:text-copper">
+                  {page.label} <ArrowUpRight size={12} />
+                </Link>
+              ))}
+            </div>
             <p className="text-[10px] tracking-label uppercase text-ink-soft">
               Est. 1984 · India
             </p>
@@ -160,6 +172,13 @@ export const SideRail = ({ collapsed, onToggle }: Props) => {
               <span className="font-display text-3xl text-ink">{item.label}</span>
             </button>
           ))}
+          <div className="mt-4 flex gap-6 border-t border-ink/10 pt-6">
+            {PAGES.map((page) => (
+              <Link key={page.to} to={page.to} className="inline-flex items-center gap-2 text-[10px] tracking-label uppercase text-copper">
+                {page.label} <ArrowUpRight size={12} />
+              </Link>
+            ))}
+          </div>
         </nav>
       </div>
     </>
